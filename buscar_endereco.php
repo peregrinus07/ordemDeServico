@@ -2,7 +2,7 @@
 
     //$estado = $_POST['id'];
 
-	//include_once("conexao.php");
+	 include_once("conexao.php");
 	
 	$cidades = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_STRING);
     
