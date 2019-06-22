@@ -197,7 +197,7 @@ if (!$conn) {
            //alert ($nomeAluno.val());    
 
         $.ajax({
-
+ 
           url: 'listar_bairros_jquery.php',
           type: 'POST',
           data: {id: $nomeAluno.val()},
