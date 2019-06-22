@@ -72,6 +72,8 @@ $( document ).ready(function() {
 
         var rua = $("#endereco").val()
         var teste = $("#bairro option:selected").val();
+
+         
  
          //alert(teste);
 

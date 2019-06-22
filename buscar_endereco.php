@@ -1,5 +1,4 @@
 <?php
-
     //$estado = $_POST['id'];
 
 	 include_once("conexao.php");
