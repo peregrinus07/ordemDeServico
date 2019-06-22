@@ -78,6 +78,7 @@ if (!$conn) {
 
 <script src="./js/listarCidades.js"></script>
 
+<script src="./js/validarCampos.js"></script>
 
   <script type="text/javascript">
   
@@ -173,7 +174,7 @@ if (!$conn) {
       <div id="formularioCliente" style="float: left; margin-left: 10%; margin-top:-20px;">
       
   
-      <form   id="formulario" class="form-group" style="border:10px; margin-left: 50px; margin-top: 75px;" action="cadastrarClienteMysql.php" method="POST">
+      <form name="formulario"   id="formulario" class="form-group" style="border:10px; margin-left: 50px; margin-top: 75px;" action="cadastrarClienteMysql.php" method="POST">
    
       <legend style="">Cadastrar Cliente</legend>
 
@@ -263,7 +264,7 @@ if (!$conn) {
 
    </div> <!-- form-row -->
 
-<button id="botao" onclick="verifica();" type="submit" class="btn btn-primary">Cadastrar</button>
+<button id="botao" onclick="validar();" type="submit" class="btn btn-primary" >Cadastrar</button>
 <button type="button" id="limparCampos" class="btn btn-danger">Limpar Campos</button>
 
       <p><a href="listarClientes.php"><p>Listar Clientes<p></a><p>
