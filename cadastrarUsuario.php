@@ -74,6 +74,10 @@ if (!$conn) {
 
 <script src="./js/bootstrap.min.js"></script>
 
+<script src="./js/validarCampos.js"></script>
+
+<script src="./js/listarCidades.js"></script>
+
   <script type="text/javascript">
   
     $( document ).ready(function() {
@@ -182,104 +186,7 @@ if (!$conn) {
       }); // keypress
 
  
-          // carregar bairros
-     $("#cidades").change(function() {
-    //$('#pesquisaCliente').keyup(function(){
-         
-        // input[name='pesquisaCliente'
-         var $nomeAluno = $("#cidades");
-
-
-          //var $teste = $("#estados");
-          //alert($teste.val());
-           //alert ($nomeAluno.val());    
-
-        $.ajax({
-
-          url: 'listar_bairros_jquery.php',
-          type: 'POST',
-          data: {id: $nomeAluno.val()},
-
-          beforeSend: function(){
-          $("#bairro").css({'display':'block'});
-            //$("body").html('<p>Carregando...</p>');
-            $("#bairro").html('<p>Carregando</p>');
-
-        },
-
-          success: function(data)
-                {
-                  console.log(data);
-                    $("#bairro").css({'display':'block'});
-                    $("#bairro").html("");
-                    $("#bairro").html(data);
-
-                },
-
-                 error: function(data)
-                {
-                    $("#bairro").css({'display':'block'});
-                    $("#bairro").html("Houve um erro ao carregar");
-                }
-
-        }); 
-
-
-    });
- 
-        //listar endereços
-      $("#endereco").keyup(function(){
-   
-         // select cidade
-         var cidade = $("#cidades option:selected").val();
-
-
-         if(cidade =="" || cidade =="registre uma cidade" || cidade==null){
-
-              alert("Selecione uma Cidade");
-
-         }
-
-         else {
-
-          var bairro = $("#bairro option:selected").val();
-
-          if(bairro =="" || bairro =="Selecione um bairro" || bairro==null){
-
-              alert("Selecione um bairro");
-
-          } // if
-
-
-         }
-
-
-         var teste = $("#bairro option:selected").val();
-
-          //alert(teste);
-
-         //var QtdAcomodacaoD = $("#cidades option:selected").val();
-
-        //var QtdAcomodacaoD = "CE";
-       //  alert(QtdAcomodacaoD);
- 
-     //var nome = $("#test").val();
-
-     //var nome =  $("#cidades").val();
-
-     //alert("Value: " + nome);
-
-
-     //console.log("bairro selecionado: "+teste);
-    $("#endereco").autocomplete({
-     
-      // fonte dos dados
-      source: "buscar_endereco.php?teste=" + teste + "",
-
-       });
- 
-
-      });
+        
 
       $("#limparCampos").on('click', function() {
 
@@ -288,6 +195,21 @@ if (!$conn) {
       $("#formulario").find('input').val('');
 
     }); // limpar campos
+
+
+
+         $("input.data").mask("99/99/9999");
+       // $("input.cpf").mask("999.999.999-99");
+          $("#cpf").mask("999.999.999-99");  
+
+
+        $("input[name='cep'").mask("99.999-999");
+        //$('input.decimal').mask('#.##0,00');
+
+         $("input[name='telefone']").mask("(99) 999.999-999");
+         
+ 
+         $("input.decimal").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 
 
 });
@@ -307,7 +229,7 @@ if (!$conn) {
       <div id="formularioCliente" style="float: left; margin-left: 10%; margin-top:-20px;">
       
   
-      <form id="formulario" class="form-group" style="border:10px; margin-left: 50px; margin-top: 75px;" action="
+      <form name="formulario" id="formulario" class="form-group" style="border:10px; margin-left: 50px; margin-top: 75px;" action="
       cadastrarUsuarioMysql.php" method="POST">
    
       <legend style="">Cadastrar Usuário</legend>
@@ -407,7 +329,7 @@ if (!$conn) {
 
    </div> <!-- form-row -->
 
-<button type="submit" class="btn btn-primary">Cadastrar</button>
+<button type="submit" class="btn btn-primary" onclick="validar();">Cadastrar</button>
 <button type="button" id="limparCampos" class="btn btn-danger">Limpar Campos</button>
 
       <p><a href="listarUsuarios.php"><p>Listar Usuários<p></a><p>

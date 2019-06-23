@@ -34,7 +34,7 @@
 
 	$data = date("Y-m-d H:i:s");
 
-
+ 	echo "<h3> Cadastro Cliente </h3><br>";
 	echo "Nome: " .$nome;
 	echo "<br>";
 	//echo "Rg: "   .$rg;
@@ -106,7 +106,7 @@ e_mail_cliente, telefone_cliente) values ('$nome','$cpf','$email','$telefone')";
 
   	 echo "<br>";
   	 
-   
+   	
   	 echo "<br>";
   	 echo "Nome: ".$nome;
   	 echo "<br>";
