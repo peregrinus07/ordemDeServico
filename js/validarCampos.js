@@ -12,6 +12,8 @@ function validar() {
 
 	var endereco = formulario.endereco.value;
 
+	var rg = formulario.rg.value;
+
 	if (nome == "") {
 
 		alert("Nome Vazio");
@@ -34,6 +36,19 @@ function validar() {
 
 		alert("Endereço vazio " + endereco.length);
 		formulario.endereco.focus();
+		event.preventDefault();
+		return false;
+	}
+
+		//var string = string.replace(/([a-z])/g, "");
+		rg = rg.replace(/([a-z])/g, "");
+
+		//alert("Rg "+rg)
+
+		if (rg =="" || rg.length == 0 ) {
+
+		alert("Rg Invalido " ) //+ rg.length);
+		formulario.rg.focus();
 		event.preventDefault();
 		return false;
 	}

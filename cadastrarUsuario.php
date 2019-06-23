@@ -75,7 +75,7 @@ if (!$conn) {
 <script src="./js/bootstrap.min.js"></script>
  
 <script src="./js/validarCampos.js"></script>
- 
+
 <script src="./js/listarCidades.js"></script>
 
   <script type="text/javascript">
@@ -200,7 +200,14 @@ if (!$conn) {
 
          $("input.data").mask("99/99/9999");
        // $("input.cpf").mask("999.999.999-99");
-          $("#cpf").mask("999.999.999-99");  
+
+
+        //  $("#cpf").mask("999.999.999-99");  
+
+
+        $("input[name='cpf'").mask("999.999-999");
+        //$('input.decimal').mask('#.##0,00');
+
 
 
         $("input[name='cep'").mask("99.999-999");
@@ -248,7 +255,7 @@ if (!$conn) {
 
     <div class="form-group col-md-4">
       <label for="inputPassword4">Cpf</label>
-      <input type="text" name="cpf" class="form-control" id="cpf" placeholder="">
+      <input type="text" name="cpf" id="cpf" class="form-control" id="cpf" placeholder="">
     </div>
 
     <div class="form-group col-md-4">
