@@ -14,6 +14,8 @@ function validar() {
 
 	var rg = formulario.rg.value;
 
+	var cpf = formulario.cpf.value;
+
 	if (nome == "") {
 
 		alert("Nome Vazio");
@@ -54,7 +56,26 @@ function validar() {
 	}
 
 
+	cpf = cpf.replace(/([a-z])/g, "");
+ 
+	if (cpf =="" || cpf.length == 0 ) {
 
+		var contador = 1;
+
+		alert("cpf Invalido " ) //+ rg.length);
+		formulario.cpf.focus();
+		event.preventDefault();
+		return false;
+		event.returnValue = false;
+return false;
+   
+	}
+
+ 
+	if (contador==1) {
+
+event.preventDefault();
+ }
  /*
 	if (telefone =="" || telefone.length  < 3  ) {
 

@@ -250,7 +250,7 @@ if (!$conn) {
 
        <div class="form-group col-md-4">
       <label for="inputPassword4">Rg</label>
-      <input type="text" name="rg" class="form-control" id="cpf" placeholder="">
+      <input type="text" name="rg" class="form-control" id="rg" placeholder="">
     </div>
 
     <div class="form-group col-md-4">
