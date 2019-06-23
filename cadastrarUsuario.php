@@ -73,9 +73,9 @@ if (!$conn) {
    <script type="text/javascript" src="./js/maskMoney.min.js"></script>
 
 <script src="./js/bootstrap.min.js"></script>
-
+ 
 <script src="./js/validarCampos.js"></script>
-
+ 
 <script src="./js/listarCidades.js"></script>
 
   <script type="text/javascript">

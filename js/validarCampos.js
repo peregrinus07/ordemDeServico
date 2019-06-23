@@ -16,13 +16,16 @@ function validar() {
 
 		alert("Nome Vazio");
 		formulario.nomeCliente.focus();
+		event.preventDefault();
 		return false;
+		    
 	}
 
 	if (email =="" || email.indexOf('@') == -1 ) {
 
 		alert("Email vazio");
 		formulario.email.focus();
+		event.preventDefault();
 		return false;
 	}
 
@@ -31,6 +34,7 @@ function validar() {
 
 		alert("Endereço vazio " + endereco.length);
 		formulario.endereco.focus();
+		event.preventDefault();
 		return false;
 	}
 
