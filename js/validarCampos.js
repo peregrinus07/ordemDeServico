@@ -60,14 +60,13 @@ function validar() {
  
 	if (cpf =="" || cpf.length == 0 ) {
 
-		var contador = 1;
+		 var contador = 1;
 
 		alert("cpf Invalido " ) //+ rg.length);
 		formulario.cpf.focus();
 		event.preventDefault();
+		 
 		return false;
-		event.returnValue = false;
-return false;
    
 	}
 

@@ -82,8 +82,7 @@ if (!$conn) {
   
     $( document ).ready(function() {
       
-
-      $("#estados").change(function() {
+$("#estados").change(function() {
     //$('#pesquisaCliente').keyup(function(){
          
         // input[name='pesquisaCliente'
@@ -123,36 +122,11 @@ if (!$conn) {
                 }
 
         }); 
-
-
-    });
-
-        $("input.data").mask("99/99/9999");
-       // $("input.cpf").mask("999.999.999-99");
-          $("#cpf").mask("999.999.999-99");  
-
-
-        $("input[name='cep'").mask("99.999-999");
-        //$('input.decimal').mask('#.##0,00');
-
-         $("input[name='telefone']").mask("(99) 999.999-999");
-         
-
-
-         $("input.decimal").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
-
-
-
-          $("input[name='cep'").keypress(function(){
         
-            $("input[name='cep'");
-           
-});
+}); // estado
 
 
-            // campo endereco
-
-           $("input[name='inputAddress']").keypress(function(){
+ $("input[name='inputAddress']").keypress(function(){
    
         var teste = $("#cidades option:selected").val();
 
@@ -184,9 +158,8 @@ if (!$conn) {
         } // else
  
       }); // keypress
+     
 
- 
-        
 
       $("#limparCampos").on('click', function() {
 
@@ -197,29 +170,28 @@ if (!$conn) {
     }); // limpar campos
 
 
+      // mascaras
 
+
+          // mascaras
          $("input.data").mask("99/99/9999");
        // $("input.cpf").mask("999.999.999-99");
 
+//$("#cpf").mask("999.999.999-99");  
 
-        //  $("#cpf").mask("999.999.999-99");  
+ $("input[name='rg'").mask("999.999-999");
 
-
-        $("input[name='cpf'").mask("999.999-999");
+  $("input[name='cpf'").mask("999.999-999");
         //$('input.decimal').mask('#.##0,00');
 
-
-
-        $("input[name='cep'").mask("99.999-999");
+ $("input[name='cep'").mask("99.999-999");
         //$('input.decimal').mask('#.##0,00');
 
-         $("input[name='telefone']").mask("(99) 999.999-999");
-         
- 
-         $("input.decimal").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+           $("input[name='telefone']").mask("(99) 999.999-999");
+          $("input.decimal").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 
 
-});
+}); // document
  
 </script>
   
@@ -255,7 +227,7 @@ if (!$conn) {
 
     <div class="form-group col-md-4">
       <label for="inputPassword4">Cpf</label>
-      <input type="text" name="cpf" id="cpf" class="form-control" id="cpf" placeholder="">
+      <input type="text" name="cpf"    class="form-control" id="cpf" placeholder="">
     </div>
 
     <div class="form-group col-md-4">
