@@ -188,6 +188,7 @@ $("#estados").change(function() {
         //$('input.decimal').mask('#.##0,00');
 
            $("input[name='telefone']").mask("(99) 999.999-999");
+           
           $("input.decimal").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 
 

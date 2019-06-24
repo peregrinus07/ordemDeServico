@@ -371,12 +371,12 @@ if (!$conn) {
       // Obtendo os dados por meio de um loop while
  while ($registro = mysqli_fetch_array($produtos))
  {
-   $nome = $registro['nome_cliente'];
-   $idCliente = $registro['id_cliente'];
+   $nome = $registro['nome_usuario'];
+   $idCliente = $registro['id_usuario'];
  
    echo "<tr>";    
-   echo "<td> ".$registro['id_cliente'] ."</td>";
-   echo "<td> ".$registro['nome_cliente'] ."</td>";   
+   echo "<td> ".$registro['id_usuario'] ."</td>";
+   echo "<td> ".$registro['nome_usuario'] ."</td>";   
    echo "<td> 
    <a href='deletarCliente.php?usuario=$idCliente'><button type='button' class='btn btn-primary'>Deletar</button></a>
    <a id='$idCliente' onclick='modal(this.id);' href='#?usuario=$idCliente&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
