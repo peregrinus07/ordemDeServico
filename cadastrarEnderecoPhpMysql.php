@@ -1,10 +1,12 @@
 <?php
 
-    include_once("./funcoes/funcoes.php");
+   include_once("./funcoes/funcoes.php");
 
-   $estado = teste($_POST["estado"]);
-    
-    
+
+    // estado
+    $estado = teste($_POST["estado"]);
+
+     // cidade
     if(!isset($_POST["cidades"]) || empty($_POST["cidades"])){
 
         $cidade = "vazia";
@@ -14,9 +16,7 @@
         $cidade =  $_POST["cidades"];
       }
 
-
-       
-     
+    // bairro
     if (!isset($_POST["bairro"]) || empty($_POST["bairro"])) {
        
        $bairro = "vazio";
@@ -25,16 +25,17 @@
       $bairro = $_POST["bairro"];    
       }
 
-
-    if (!isset($_POST["endereco"]) || empty($_POST["endereco"])) {
+      // rua
+      if (!isset($_POST["endereco"]) || empty($_POST["endereco"])) {
       
         $rua = "vazia";
     }
       else {
         $rua = $_POST["endereco"];
       }
- 
-    if (!isset($_POST["cep"]) || empty($_POST["cep"])) {
+
+  // cep 
+if (!isset($_POST["cep"]) || empty($_POST["cep"])) {
       
         $cep = "vazio";
     }
@@ -43,8 +44,14 @@
       }
 
 
-    $cidade = teste($_POST["cidades"]);  
+    //$cidade = teste($_POST["cidades"]);  
 
+
+   print_r("Cadastrar Cidade<br><br>");
+   print_r("Estado: ".$estado ."<br>");
+   print_r("Cidade: ".$cidade ."<br><br>");
+
+    
     echo "Estado: " .$estado ."<br>";
     echo "Cidade: " .$cidade ."<br>";
     echo "Bairro: " .$bairro ."<br>";
@@ -52,10 +59,11 @@
     echo "Cep: " .$cep ."<br>";
 
 
-
     // salvar no banco com o ç
  //   $rua = utf8_decode($rua);
- 
+
+
+
 /*
     $servername = "localhost";
     $database = "sistemaDeVendas";
@@ -70,9 +78,12 @@
     //echo "<br>Connected successfully";
 */
 
-   include_once("conexao.php");
+
+
+     include_once("conexao.php");
 
    //$cadastrar = teste($_POST["cadastrarBairro"]);
+
 
 
    if (empty($_POST["cadastrarBairro"])) {
@@ -84,7 +95,13 @@
 
     }
 
+
    echo "<br>" .$cadastrar ."<br>";
+
+
+
+
+   // cadastrar endereco
 
    if ($cadastrar == "cadastrarEndereco") {
       
@@ -163,17 +180,20 @@ echo "mysqli: " .mysqli_error($conn);
   } // cadastrar endereco
 
 
+  
   //$teste = teste($_POST["cadastrarBairro"]);
 
   if ($cadastrar =="cadastrarCidade" ) {
      
-     echo "Cadastrar Cidade: <br>";
+     echo "<br>Cadastrar Cidade: <br>";
 
 
-    $sql = "select * from tabela_estado where sigla_estado = '$estado';"; 
+ $sql = "select * from tabela_estado where sigla_estado = '$estado';"; 
 
 
-    $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");  
+ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");  
+
+
 
        // Obtendo os dados por meio de um loop while
        while ($registro = mysqli_fetch_array($resultado))
@@ -183,8 +203,10 @@ echo "mysqli: " .mysqli_error($conn);
 
         echo "Id estado - " .$idEstado ."<br>";
 
+
                 $sql = "INSERT INTO tabela_cidade (id_estado,nome_cidade
 ) values ('$idEstado','$cidade')";
+
 
 
 if (mysqli_query($conn, $sql)) {
@@ -193,8 +215,15 @@ if (mysqli_query($conn, $sql)) {
       echo "<br>Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
+
+
 //mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
  
+
+
+
+
+     
   } // cadastrar cidade
 
 
@@ -233,6 +262,7 @@ $teste = mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro"
   }
 
     } // cadastrar cidade
+
 
  mysqli_close($conn);
 ?>
