@@ -65,7 +65,7 @@
     </div>
 
       <div class="form-group col-md-4">
-      <label for="inputCity">Bairro <img class="img" id="imgBairro" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
+      <label for="inputCity">Bairro <img class="img" id="imgBairro" onclick="getData(3)" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
       <select id="bairro" name="bairro" class="form-control">
        
       </select>

@@ -93,6 +93,15 @@ if (!$conn) {
        
      } // if
     
+     if(cont==3){
+
+      console.log("teste")
+
+  $(".conteudo").load('cadastrarBairro.php');
+
+     } // if
+
+
 }
 
 
