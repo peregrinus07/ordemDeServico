@@ -1,6 +1,6 @@
 <html>
 <head>
-  <script src="./js/listarCidades.js"></script>
+  <script src="./js/cadastrarBairro.js"></script>
 </head>
        <div id="cadastrarbairro"  >
           
