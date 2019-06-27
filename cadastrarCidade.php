@@ -1,33 +1,32 @@
+
 <html>
 <head>
-  <script src="./js/listarCidades.js"></script>   
-
+ 
 </head>
 
-<div id="cadastrarRua">
-         <!-- cadastrar Rua -->
+       <div id="cadastrarCidade" style="margin-left: -1px;">
+         <!-- cadastrar cidade -->
 
-      <div id="formularioRua" style="float: left; margin-left: -15%; margin-top:-2%;">
+      <div id="formularioRua" style="">
   
       <form style="border:10px; margin-left: 400px; margin-top: 80px;" action="
       cadastrarEnderecoPhpMysql.php" method="POST">
    
-      <legend style="">Cadastrar Endereço</legend>
+      <legend style="">Cadastrar Cidade</legend>
 
       <!--
       <img class="img" onclick="modal(3);" style="width: 30px; height: 30px;" src="./img/adicionar.png">
        -->
 
 
- 
        <div class="form-row" style="margin-top: 10%;">
       
-         <div class="form-group col-md-4">
-      <label for="inputEstado" >Estado <img class="img" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
+         <div class="form-group col-md-6">
+      <label for="inputEstado" >Estado  </label>
       <select  name="estado" id="estados" class="form-control">
        <!-- <option selected>Escolher...</option> -->
         <!-- <option>...</option> -->
-        <option id="estados2" selected>Escolher...</option>
+        <option id="estados" selected>Escolher...</option>
         <option value="AC">Acre</option>
   <option value="AL">Alagoas</option>
   <option value="AP">Amapá</option>
@@ -58,16 +57,30 @@
       </select>
     </div>
 
-
+<div class="form-group col-md-6">
+    <label for="inputAddress">Nome da Cidade</label>
+   <input type="text" class="form-control" name="cidades" id="endereco" placeholder="Cidade">
+  </div>
+<!-- 
      <div class="form-group col-md-4">
-      <label for="inputCity">Cidade <img id="imgCidade" class="img" style="width: 30px; height: 30px;" onclick="getData(2);" src="./img/adicionar.png"></label>
+      <label for="inputCity">Cidade <img id="imgCidade" class="img" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
+      -->
+      <!-- 
       <select id="cidades" name="cidades" class="form-control"></select>
+    -->
+    <!-- 
     </div>
+-->
 
       <div class="form-group col-md-4">
-      <label for="inputCity">Bairro <img class="img" id="imgBairro" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
+
+        <input type="hidden" name="cadastrarBairro" value="cadastrarCidade">
+ <!-- 
+      <label for="inputCity">Bairro <img class="img" onclick="modal(3);" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
+      -->
+      <!-- 
       <select id="bairro" name="bairro" class="form-control">
-       
+       -->
       </select>
       </div>
 
@@ -76,20 +89,14 @@
  
     <div class="form-row" style="margin-top:1%;">
     
-    <div class="form-group col-md-12">
-    <label for="inputAddress">Endereço</label>
-   <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Rua dos Bobos, nº 0">
-  </div>
-   
-
+    
+    
+    <!-- 
       <div class="form-group col-md-6">
       <label for="inputCEP">CEP</label>
        <input type="text" class="form-control" name="cep" id="cep">
     </div>
-    
-        <div class="form-group col-md-12"> 
-        <input type="hidden" name="cadastrarBairro" value="cadastrarEndereco">
-   </div>
+    -->
   </div>
    
 
@@ -103,13 +110,5 @@
     </form>
  
 
-    </div> <!-- formulario rua -->    
- 
-       </div><!-- cadastrar rua -->
-
-</a>
-</p>
-</form>
-</div>
-</div>
-</html>
+    </div> <!-- formulario rua -->   
+       </div><!-- cadastrar bairro -->

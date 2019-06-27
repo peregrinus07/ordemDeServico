@@ -87,7 +87,11 @@ if (!$conn) {
 
     } // if
 
-     
+     if(cont==2){
+
+      $(".conteudo").load('cadastrarCidade.php');
+       
+     } // if
     
 }
 
@@ -102,6 +106,7 @@ if (!$conn) {
 
     $("#imgCidade").click(function(event){
 
+      alert();
       $("#cadastrarRua").hide("slow");
       $("#cadastrarCidade").show("slow");
 
@@ -112,6 +117,7 @@ if (!$conn) {
 
     $("#imgBairro").click(function(event){
 
+      alert();
       $("#cadastrarRua").hide("slow");
       $("#cadastrarCidade").hide("slow");
       $("#cadastrarbairro").show("slow");
