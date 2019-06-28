@@ -18,14 +18,19 @@ if (!$conn) {
 */
     include_once("conexao.php");
 
-  	 $sql = "SELECT * FROM tabela_clientes";
+  	 $sql = "select * from tabela_cidade inner JOIN
+tabela_estado on tabela_estado.id_estado = tabela_cidade.id_estado inner JOIN tabela_bairro on
+tabela_bairro.id_cidade = tabela_cidade.id_cidade";
+
  	 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
  
     //verifica a página atual caso seja informada na URL, senão atribui como 1ª página 
     $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
 
     //seleciona todos os itens da tabela 
-    $cmd = "select * from tabela_clientes"; 
+    $cmd = "select * from tabela_cidade inner JOIN
+tabela_estado on tabela_estado.id_estado = tabela_cidade.id_estado inner JOIN
+tabela_bairro on tabela_bairro.id_cidade = tabela_cidade.id_cidade"; 
     $produtos = mysqli_query($conn,$cmd) or die("Erro ao retornar dados");
 
     //conta o total de itens 
@@ -41,7 +46,10 @@ if (!$conn) {
     $inicio = ($registros*$pagina)-$registros;
 
     //seleciona os itens por página 
-    $cmd = "select * from tabela_clientes limit $inicio,$registros"; 
+    $cmd = "select * from tabela_cidade inner JOIN
+tabela_estado on tabela_estado.id_estado = tabela_cidade.id_estado inner JOIN tabela_bairro on
+tabela_bairro.id_cidade = tabela_cidade.id_cidade
+  limit $inicio,$registros"; 
     $produtos = mysqli_query($conn,$cmd) or die("Erro ao retornar dados"); 
     $total = $produtos->num_rows;
 
@@ -356,7 +364,7 @@ if (!$conn) {
       <tr>
         <th>Estado</th>
         <th>Cidade</th>
-        <th>Rua</th>
+        <th>Bairro</th>
         <th>Opsções</th>
       </tr>
     </thead>
@@ -372,13 +380,13 @@ if (!$conn) {
       // Obtendo os dados por meio de um loop while
  while ($registro = mysqli_fetch_array($produtos))
  {
-   $nome = $registro['nome_cliente'];
-   $idCliente = $registro['id_cliente'];
+   $nome = $registro['nome_estado'];
+   $idCliente = $registro['nome_cidade'];
  
    echo "<tr>";    
-   echo "<td> "."Rua" ."</td>";
-   echo "<td> ".$registro['id_cliente'] ."</td>";
-   echo "<td> ".$registro['nome_cliente'] ."</td>";   
+   echo "<td> ".$registro['nome_estado'] ."</td>";
+   echo "<td> ".$registro['nome_cidade'] ."</td>";
+   echo "<td> ".$registro['nome_bairro'] ."</td>";   
    echo "<td> 
    <a href='deletarCliente.php?usuario=$idCliente'><button type='button' class='btn btn-primary'>Deletar</button></a>
    <a id='$idCliente' onclick='modal(this.id);' href='#?usuario=$idCliente&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
