@@ -107,7 +107,7 @@
 
   <button type="submit" class="btn btn-primary">Cadastrar</button>
 
-  <p><a href="listarClientes.php"></p>listar clientes<p></a></p>
+  <p><a href="listarCidades.php"></p>listar Cidades<p></a></p>
   
   </div> <!-- linha -->
    
