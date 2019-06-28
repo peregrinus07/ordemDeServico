@@ -2,6 +2,17 @@
 <head>
   <script src="./js/listarCidades.js"></script>   
 
+
+<script type="text/javascript">
+  
+
+   $( document ).ready(function() { 
+        $("input[name='cep'").mask("99.999-999");
+        //$('input.decimal').mask('#.##0,00');
+
+});
+</script>
+
 </head>
 
 <div id="cadastrarRua">
