@@ -18,9 +18,7 @@ if (!$conn) {
 */
     include_once("conexao.php");
 
-  	 $sql = "select * from tabela_cidade inner JOIN
-tabela_estado on tabela_estado.id_estado = tabela_cidade.id_estado inner JOIN tabela_bairro on
-tabela_bairro.id_cidade = tabela_cidade.id_cidade";
+  	 $sql = "select * from tabela_descricao_rua,tabela_bairro, tabela_cidade, tabela_estado WHERE tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade AND tabela_cidade.id_estado = tabela_estado.id_estado";
 
  	 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
  
@@ -28,9 +26,9 @@ tabela_bairro.id_cidade = tabela_cidade.id_cidade";
     $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
 
     //seleciona todos os itens da tabela 
-    $cmd = "select * from tabela_cidade inner JOIN
-tabela_estado on tabela_estado.id_estado = tabela_cidade.id_estado inner JOIN
-tabela_bairro on tabela_bairro.id_cidade = tabela_cidade.id_cidade"; 
+    $cmd = "select * from tabela_descricao_rua,tabela_bairro, tabela_cidade, tabela_estado
+WHERE tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade
+AND tabela_cidade.id_estado = tabela_estado.id_estado"; 
     $produtos = mysqli_query($conn,$cmd) or die("Erro ao retornar dados");
 
     //conta o total de itens 
@@ -46,9 +44,10 @@ tabela_bairro on tabela_bairro.id_cidade = tabela_cidade.id_cidade";
     $inicio = ($registros*$pagina)-$registros;
 
     //seleciona os itens por página 
-    $cmd = "select * from tabela_cidade inner JOIN
-tabela_estado on tabela_estado.id_estado = tabela_cidade.id_estado inner JOIN tabela_bairro on
-tabela_bairro.id_cidade = tabela_cidade.id_cidade
+    $cmd = "select * from tabela_descricao_rua,tabela_bairro, tabela_cidade, tabela_estado WHERE
+tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+AND tabela_bairro.id_cidade = tabela_cidade.id_cidade
+AND tabela_cidade.id_estado = tabela_estado.id_estado
   limit $inicio,$registros"; 
     $produtos = mysqli_query($conn,$cmd) or die("Erro ao retornar dados"); 
     $total = $produtos->num_rows;
@@ -365,6 +364,7 @@ tabela_bairro.id_cidade = tabela_cidade.id_cidade
         <th>Estado</th>
         <th>Cidade</th>
         <th>Bairro</th>
+        <th>Rua</th>
         <th>Opsções</th>
       </tr>
     </thead>
@@ -387,6 +387,7 @@ tabela_bairro.id_cidade = tabela_cidade.id_cidade
    echo "<td> ".$registro['nome_estado'] ."</td>";
    echo "<td> ".$registro['nome_cidade'] ."</td>";
    echo "<td> ".$registro['nome_bairro'] ."</td>";   
+   echo "<td> ".$registro['nome_da_rua'] ."</td>";   
    echo "<td> 
    <a href='deletarCliente.php?usuario=$idCliente'><button type='button' class='btn btn-primary'>Deletar</button></a>
    <a id='$idCliente' onclick='modal(this.id);' href='#?usuario=$idCliente&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
