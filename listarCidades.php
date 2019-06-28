@@ -1,5 +1,7 @@
-<?php
  
+
+<?php
+ header('Content-Type: text/html; charset=utf-8'); 
 	//echo "Exercitando a programação em PHP"; 
   
 
@@ -17,6 +19,17 @@ if (!$conn) {
 //echo "<br>Connected successfully";
 */
     include_once("conexao.php");
+
+header('Content-Type: text/html; charset=utf-8');
+
+//após a conexão com o BD
+mysqli_query($conn,"SET NAMES 'utf8'");
+
+mysqli_query($conn,'SET character_set_connection=utf8');
+
+mysqli_query($conn,'SET character_set_client=utf8');
+
+mysqli_query($conn,'SET character_set_results=utf8'); 
 
   	 $sql = "select * from tabela_descricao_rua,tabela_bairro, tabela_cidade, tabela_estado WHERE tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade AND tabela_cidade.id_estado = tabela_estado.id_estado";
 
@@ -78,7 +91,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 <html>
 <head>
   <title>Listar Cidades</title>
-
+<meta charset="UTF-8">
    <!-- Latest compiled and minified CSS -->
    <!--
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -375,7 +388,11 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
     <td>Opsções</td>
   </tr>
 -->
+
+   
 <?php
+
+
      
       // Obtendo os dados por meio de um loop while
  while ($registro = mysqli_fetch_array($produtos))
@@ -383,11 +400,18 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
    $nome = $registro['nome_estado'];
    $idCliente = $registro['nome_cidade'];
  
+  $nomeTeste = $registro['nome_da_rua'];
+
+   $nome = utf8_decode($registro['nome_da_rua']);
+
+   $nome2 = utf8_encode($nomeTeste);
+
+
    echo "<tr>";    
    echo "<td> ".$registro['nome_estado'] ."</td>";
    echo "<td> ".$registro['nome_cidade'] ."</td>";
    echo "<td> ".$registro['nome_bairro'] ."</td>";   
-   echo "<td> ".$registro['nome_da_rua'] ."</td>";   
+   echo "<td> ".$nomeTeste ."</td>";   
    echo "<td> 
    <a href='deletarCliente.php?usuario=$idCliente'><button type='button' class='btn btn-primary'>Deletar</button></a>
    <a id='$idCliente' onclick='modal(this.id);' href='#?usuario=$idCliente&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
