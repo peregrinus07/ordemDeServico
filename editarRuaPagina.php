@@ -3,6 +3,7 @@
 	$id = $_GET["id"];
 
 
+
 	echo $id ."<br>";
 
 
@@ -284,9 +285,11 @@ if (!$conn) {
 	<div class=".container">
 
  
+
+
 <div id="cadastrarRua">
          <!-- cadastrar Rua -->
-
+<div id="idRua"><?php print_r($id); ?></div>
       <div id="formularioRua" style="float: left; margin-left: -15%; margin-top:-2%;">
   
       <form style="border:10px; margin-left: 400px; margin-top: 80px;" action="

@@ -47,18 +47,28 @@
 	 while ($registro = mysqli_fetch_array($resultado))
  	{
 
+
+ 				if ($cont==1) {
+ 					echo "<option> ". "estado" . "</option>"; 
+ 					$cont++;
+ 				}
+ 				 
  				
- 				if($cont==1){
+ 				if($cont==2){
 
  				echo "<option> ". "selecione um estado" . "</option>"; 
  				$cont++;
  				}
-   
- 				$nome = $registro['nome_estado'];
+
+ 				else{
+$nome = $registro['nome_estado'];
    
   	 			echo "<option> ". $nome . "</option>";   
  
   	 			 $contador = $contador + 1;	
+ 				}
+   
+ 				
 
  	}
  				mysqli_close($strcon);
