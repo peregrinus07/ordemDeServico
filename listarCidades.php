@@ -398,7 +398,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
  while ($registro = mysqli_fetch_array($produtos))
  {
    $nome = $registro['nome_estado'];
-   $idCliente = $registro['nome_cidade'];
+   $idRua = $registro['id_descricao_rua'];
  
   $nomeTeste = $registro['nome_da_rua'];
 
@@ -408,12 +408,12 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 
 
    echo "<tr>";    
-   echo "<td> ".$registro['nome_estado'] ."</td>";
+   echo "<td> ".$registro['nome_estado']."</td>";
    echo "<td> ".$registro['nome_cidade'] ."</td>";
    echo "<td> ".$registro['nome_bairro'] ."</td>";   
-   echo "<td> ".$nomeTeste ."</td>";   
+   echo "<td> ".$nomeTeste ." - $idRua" ."</td>";   
    echo "<td> 
-   <a href='deletarCliente.php?usuario=$idCliente'><button type='button' class='btn btn-primary'>Deletar</button></a>
+   <a href='deletarRua.php?rua=$idRua'><button type='button' class='btn btn-primary'>Deletar</button></a>
    <a id='$idCliente' onclick='modal(this.id);' href='#?usuario=$idCliente&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
    <a href='deletarCliente.php'><button type='button' class='btn btn-danger'>Detalhar</button></a>";
    echo "</td>";
