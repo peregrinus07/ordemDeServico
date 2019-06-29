@@ -414,7 +414,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
    echo "<td> ".$nomeTeste ." - $idRua" ."</td>";   
    echo "<td> 
    <a href='deletarRua.php?rua=$idRua'><button type='button' class='btn btn-primary'>Deletar</button></a>
-   <a id='$idCliente' onclick='modal(this.id);' href='#?usuario=$idCliente&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
+   <a id='$idRua' onclick='modal(this.id);' href='#?usuario=$idRua&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
    <a href='deletarCliente.php'><button type='button' class='btn btn-danger'>Detalhar</button></a>";
    echo "</td>";
    echo "</tr>";
@@ -520,7 +520,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Editar Cliente</h5>
+          <h5 class="modal-title">Editar Rua</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -554,7 +554,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
         url = "editarClientePagina.php?id"+idProduto; 
 
         $.ajax({
-                    url: "editarClientePagina.php?id",
+                    url: "editarRuaPagina.php?id",
                     type: "GET",
                     dataType: "html",
                     data: {id: idProduto},
