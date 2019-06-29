@@ -411,7 +411,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
    echo "<td> ".$registro['nome_estado']."</td>";
    echo "<td> ".$registro['nome_cidade'] ."</td>";
    echo "<td> ".$registro['nome_bairro'] ."</td>";   
-   echo "<td> ".$nomeTeste ." - $idRua" ."</td>";   
+   echo "<td> ".$nomeTeste . "</td>";   
    echo "<td> 
    <a href='deletarRua.php?rua=$idRua'><button type='button' class='btn btn-primary'>Deletar</button></a>
    <a id='$idRua' onclick='modal(this.id);' href='#?usuario=$idRua&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
