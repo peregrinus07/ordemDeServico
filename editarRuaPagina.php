@@ -85,10 +85,11 @@ if (!$conn) {
     <script src="./js/editarCidades.js"></script>
    
 <script>
+  
+  	  $( document ).ready(function() {
+   
 
 
-
-	  $( document ).ready(function() {
       /*
  
       $("#estados").change(function() {
@@ -289,7 +290,7 @@ if (!$conn) {
 
 <div id="cadastrarRua">
          <!-- cadastrar Rua -->
-<div id="idRua"><?php print_r($id); ?></div>
+<input type="hidden" id="idRua" value="<?php print_r($id); ?>">
       <div id="formularioRua" style="float: left; margin-left: -15%; margin-top:-2%;">
   
       <form style="border:10px; margin-left: 400px; margin-top: 80px;" action="
@@ -335,7 +336,7 @@ if (!$conn) {
     
     <div class="form-group col-md-12">
     <label for="inputAddress">Endereço</label>
-   <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Rua dos Bobos, nº 0">
+   <input type="text" class="form-control" name="endereco" id="endereco" value="<?php print_r($nomeCliente)?>" placeholder="Rua dos Bobos, nº 0">
   </div>
    
 

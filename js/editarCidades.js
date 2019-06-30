@@ -1,8 +1,8 @@
 
-  function teste(){
 
-  
-       
+
+
+  function teste(){
  
         $.ajax({
 
@@ -24,14 +24,14 @@
                     $("#estados").css({'display':'block'});
                     $("#estados").html("");
                     $("#estados").html(data);
-                   
+                    
                 },
 
                  error: function(data)
                 {
                      
-                    $("#estados2").css({'display':'block'});
-                    $("#estados2").html("Houve um erro ao carregar");
+                    $("#estados").css({'display':'block'});
+                    $("#estados").html("Houve um erro ao carregar");
                     console.log("erro ao carregar cidades");  
                 }
 
@@ -42,9 +42,12 @@
 
   }
 
-$( document ).ready(function() {
  
+
+$( document ).ready(function() {
+  
  teste();
+  
  $("#estados").change(function() {
     //$('#pesquisaCliente').keyup(function(){
          
