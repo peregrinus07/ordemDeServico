@@ -4,6 +4,18 @@
 
 	include_once("conexao.php");
 
+
+header('Content-Type: text/html; charset=utf-8');
+
+//após a conexão com o BD
+mysqli_query($conn,"SET NAMES 'utf8'");
+
+mysqli_query($conn,'SET character_set_connection=utf8');
+
+mysqli_query($conn,'SET character_set_client=utf8');
+
+mysqli_query($conn,'SET character_set_results=utf8'); 
+
     //$estado = var_dump($_POST['id']);
 
     $estado = $_POST['id'];
@@ -43,9 +55,6 @@
     $contador = 1;
 	
 	  $cont = 1;
-	// Obtendo os dados por meio de um loop while
-	 while ($registro = mysqli_fetch_array($resultado))
- 	{
 
 
  				if ($cont==1) {
@@ -53,24 +62,32 @@
  					$cont++;
  				}
  				 
- 				
- 				if($cont==2){
+ 				 if($cont==2){
 
  				echo "<option> ". "selecione um estado" . "</option>"; 
  				$cont++;
  				}
+ 				
+	// Obtendo os dados por meio de um loop while
+	 while ($registro = mysqli_fetch_array($resultado))
+ 	{
 
- 				else{
+
+ 				
+
+ 
 $nome = $registro['nome_estado'];
    
+   
+
   	 			echo "<option> ". $nome . "</option>";   
  
   	 			 $contador = $contador + 1;	
- 				}
+ 				 
    
  				
 
- 	}
+ 	} // while
  				mysqli_close($strcon);
 
     

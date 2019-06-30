@@ -24,6 +24,20 @@ if (!$conn) {
 
      include_once("conexao.php");
      
+
+header('Content-Type: text/html; charset=utf-8');
+
+//após a conexão com o BD
+mysqli_query($conn,"SET NAMES 'utf8'");
+
+mysqli_query($conn,'SET character_set_connection=utf8');
+
+mysqli_query($conn,'SET character_set_client=utf8');
+
+mysqli_query($conn,'SET character_set_results=utf8'); 
+
+
+
   	 $sql = "SELECT * FROM tabela_descricao_rua where id_descricao_rua='$id'";
  	 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
@@ -47,7 +61,7 @@ if (!$conn) {
 
 <html>
 <head>
-	 
+	 <meta charset="UTF-8">
 	 <link rel="stylesheet" href="./css/bootstrap.min.css">
  
  <script src="./js/jquery-ui.min.js"></script>
@@ -278,20 +292,17 @@ if (!$conn) {
 
 
 </script>
-
-
+ 
 </head>
 <body>
 
 	<div class=".container">
-
  
-
+    <input type="hidden" value="<?php print_r($id) ?>" name="">
 
 <div id="cadastrarRua">
          <!-- cadastrar Rua -->
-<input type="hidden" id="idRua" value="<?php print_r($id); ?>">
-      <div id="formularioRua" style="float: left; margin-left: -15%; margin-top:-2%;">
+       <div id="formularioRua" style="float: left; margin-left: -15%; margin-top:-2%;">
   
       <form style="border:10px; margin-left: 400px; margin-top: 80px;" action="
       cadastrarEnderecoPhpMysql.php" method="POST">
