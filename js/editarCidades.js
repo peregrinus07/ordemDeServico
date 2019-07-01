@@ -105,6 +105,8 @@
          var $nomeAluno = $("#estados");
 
 
+         //alert($nomeAluno.val());
+
           var $teste = $("#estados");
           //alert($teste.val());
           //alert ($nomeAluno.val());    

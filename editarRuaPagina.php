@@ -50,6 +50,8 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 
       $estado = $registro["nome_estado"];
 
+      $siglaEstado = $registro["sigla_estado"];
+
       $cidade = $registro["nome_cidade"];
 
       $bairro = $registro["nome_bairro"];
@@ -332,7 +334,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
       <select  name="estado" id="estados" class="form-control">
        <!-- <option selected>Escolher...</option> -->
         <!-- <option>...</option> -->
-        <option id="estados2" selected><?php print_r($estado) ?></option>
+        <option value="<?php print_r($siglaEstado) ?>" id="estados2" selected><?php print_r($estado) ?></option>
          
       </select>
     </div>
