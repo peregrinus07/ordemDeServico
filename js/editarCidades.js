@@ -46,10 +46,115 @@
   } //
 
  
+  function carregarBairros(){
+
+  
+  // carregar bairros
+
+  $( "#imgBairro" ).click(function() {
+   
+
+    var $nomeAluno = $("#cidades");
+
+    //alert($nomeCidade.val());
+
+    $.ajax({
+        
+                  url: 'listar_bairros_jquery.php',
+                  type: 'POST',
+                  data: {id: $nomeAluno.val()},
+        
+                  beforeSend: function(){
+                  $("#bairro").css({'display':'block'});
+                    //$("body").html('<p>Carregando...</p>');
+                    $("#bairro").html('<p>Carregando</p>');
+        
+                },
+        
+                  success: function(data)
+                        {
+                          console.log(data);
+                            $("#bairro").css({'display':'block'});
+                            $("#bairro").html("");
+                            $("#bairro").html(data);
+                             
+                        },
+        
+                         error: function(data)
+                        {
+                             
+                            $("#bairro").css({'display':'block'});
+                            $("#bairro").html("Houve um erro ao carregar");
+                        }
+        
+                }); 
+
+
+
+}); // function
+
+
+  } // function carregar bairros
+
+  function carregarCidades(){
+
+    $( "#imgCidade" ).click(function() {
+
+
+        // input[name='pesquisaCliente'
+         var $nomeAluno = $("#estados");
+
+
+          var $teste = $("#estados");
+          //alert($teste.val());
+          //alert ($nomeAluno.val());    
+
+ 
+        $.ajax({
+
+
+          url: 'bancoMysql.php',
+          type: 'POST',
+          data: {id: $nomeAluno.val()},
+
+          beforeSend: function(){
+          $("#cidades").css({'display':'block'});
+            //$("body").html('<p>Carregando...</p>');
+            $("#cidades").html('<p>Carregando</p>');
+
+        },
+
+          success: function(data)
+                {
+                  console.log(data);
+                    $("#cidades").css({'display':'block'});
+                    $("#cidades").html("");
+                    $("#cidades").html(data);
+                     
+                },
+
+                 error: function(data)
+                {
+
+                    $("#cidades").css({'display':'block'});
+                    $("#cidades").html("Houve um erro ao carregar");
+                    console.log("erro ao carregar cidades");  
+                }
+
+        }); // estados
+
+    }); // function
+
+
+
+  } // function
+
 
 $( document ).ready(function() {
   
   
+  carregarBairros();
+  carregarCidades();
   
  $("#estados").change(function() {
     //$('#pesquisaCliente').keyup(function(){

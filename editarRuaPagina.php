@@ -339,12 +339,12 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 
 
      <div class="form-group col-md-4">
-      <label for="inputCity">Cidade <img id="imgCidade" class="img" style="width: 30px; height: 30px;" onclick="getData(2);" src="./img/adicionar.png"></label>
+      <label for="inputCity">Cidade <img id="imgCidade" class="img" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
       <select id="cidades" name="cidades" class="form-control"><option><?php print_r($cidade) ?></option></select>
     </div>
 
       <div class="form-group col-md-4">
-      <label for="inputCity">Bairro <img class="img" id="imgBairro" onclick="getData(3)" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
+      <label for="inputCity">Bairro <img class="img" id="imgBairro" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
       <select id="bairro" name="bairro" class="form-control"><option><?php print_r($bairro) ?></option>
        
       </select>
