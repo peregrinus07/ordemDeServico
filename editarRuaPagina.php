@@ -38,11 +38,17 @@ mysqli_query($conn,'SET character_set_results=utf8');
 
 
 
-  	 $sql = "SELECT * FROM tabela_descricao_rua where id_descricao_rua='$id'";
+  	 $sql = "select * from tabela_descricao_rua, tabela_bairro, tabela_cidade, tabela_estado
+WHERE id_descricao_rua = '$id'
+AND tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade
+AND tabela_cidade.id_estado = tabela_estado.id_estado
+";
  	 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
  	  while ($registro = mysqli_fetch_array($resultado))
    {
+
+      $estado = $registro["nome_estado"];
 
    		$idCliente = $registro["id_descricao_rua"];
    		$nomeCliente = $registro["nome_da_rua"];
@@ -322,7 +328,7 @@ mysqli_query($conn,'SET character_set_results=utf8');
       <select  name="estado" id="estados" class="form-control">
        <!-- <option selected>Escolher...</option> -->
         <!-- <option>...</option> -->
-        <option id="estados2" selected>Escolher...</option>
+        <option id="estados2" selected><?php print_r($estado) ?></option>
          
       </select>
     </div>

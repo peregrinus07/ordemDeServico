@@ -4,9 +4,9 @@
 
   function teste(){
  
-    
 
- 
+
+
         $.ajax({
 
 
@@ -49,7 +49,7 @@
 
 $( document ).ready(function() {
   
- teste();
+  
   
  $("#estados").change(function() {
     //$('#pesquisaCliente').keyup(function(){
