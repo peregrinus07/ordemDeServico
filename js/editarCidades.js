@@ -58,6 +58,11 @@
 
     //alert($nomeCidade.val());
 
+    if ($nomeAluno.val() == "selecione uma cidade") {
+      alert("selecione uma cidade");
+       $( "#cidades" ).focus();
+    }
+
     $.ajax({
         
                   url: 'listar_bairros_jquery.php',
@@ -132,6 +137,7 @@
                     $("#cidades").css({'display':'block'});
                     $("#cidades").html("");
                     $("#cidades").html(data);
+                    $("#bairro").html("<option>Selecione uma Cidade</option>");
                      
                 },
 
@@ -191,6 +197,7 @@ $( document ).ready(function() {
                     $("#cidades").css({'display':'block'});
                     $("#cidades").html("");
                     $("#cidades").html(data);
+
                      
                 },
 

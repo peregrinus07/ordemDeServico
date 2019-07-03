@@ -317,7 +317,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
        <div id="formularioRua" style="float: left; margin-left: -15%; margin-top:-2%;">
   
       <form style="border:10px; margin-left: 400px; margin-top: 80px;" action="
-      cadastrarEnderecoPhpMysql.php" method="POST">
+      atualizarEnderecoMysql.php" method="POST">
    
       <legend style="">Editar Endereço</legend>
 
@@ -328,7 +328,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 
  
        <div class="form-row" style="margin-top: 10%;">
-      
+        <input type="hidden" name="id" value="<?php print_r($id) ?>">
          <div class="form-group col-md-4">
       <label for="inputEstado" >Estado <img class="img" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
       <select  name="estado" id="estados" class="form-control">
