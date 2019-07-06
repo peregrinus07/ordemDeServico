@@ -56,6 +56,8 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 
       $bairro = $registro["nome_bairro"];
 
+      $idBairro = $registro["id_bairro"];
+
    		$idCliente = $registro["id_descricao_rua"];
    		$nomeCliente = $registro["nome_da_rua"];
 		$cpfCnpjCliente = $registro["cpf_cnpj_cliente"];
@@ -329,6 +331,8 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
  
        <div class="form-row" style="margin-top: 10%;">
         <input type="hidden" name="id" value="<?php print_r($id) ?>">
+        <input type="hidden" name="idBairro" value="<?php print_r($idBairro) ?>">
+        
          <div class="form-group col-md-4">
       <label for="inputEstado" >Estado <img class="img" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
       <select  name="estado" id="estados" class="form-control">

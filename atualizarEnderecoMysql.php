@@ -12,6 +12,8 @@ $estado = teste($_POST["estado"]);
 $cidades = teste($_POST["cidades"]);
  
 $bairro = teste($_POST["bairro"]);
+
+$idBairro = teste($_POST["idBairro"]);
  
 $endereco = teste($_POST["endereco"]);
   
@@ -46,6 +48,7 @@ $cep = teste($_POST["cep"]);
 	echo "<br>";
 	echo "Bairro: " .$bairro;
 	echo "<br>";
+  print_r("Id Bairro: " .$idBairro ."<br>");
 	echo "Rua : " .$endereco;
 	echo "<br>";
 	echo "Cep: " .$cep;
@@ -104,14 +107,20 @@ e_mail_cliente, telefone_cliente) values ('$nome','$cpf','$email','$telefone')";
 
     $endereco = utf8_decode($endereco);
 
-    $sql ="UPDATE tabela_descricao_rua SET nome_da_rua = '$endereco' where id_descricao_rua='$id'";
-
+    $sql ="UPDATE tabela_descricao_rua SET nome_da_rua = '$endereco' WHERE id_descricao_rua ='$id'";
+ 
     mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
 
     $id =  mysqli_insert_id($conn);
 
     printf (" id: %d.\n", mysqli_insert_id($conn));
  
+
+    
+    $sql1 = "select * from tabela_produto where id_produto ='$idProduto'";
+  
+  $resultado1 = mysqli_query($conn,$sql1) or die("Erro ao retornar dados");
+
 
  
     $sql1 = "select * from tabela_produto where id_produto ='$idProduto'";
