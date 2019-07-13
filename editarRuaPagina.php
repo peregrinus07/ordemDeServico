@@ -114,6 +114,16 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
    
 <script>
   
+  function te(){
+     
+     var a = $("#estados").val();
+
+     alert(a)
+  }
+
+
+
+
   	  $( document ).ready(function() {
    
 
@@ -334,7 +344,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
         <input type="hidden" name="idBairro" value="<?php print_r($idBairro) ?>">
         
          <div class="form-group col-md-4">
-      <label for="inputEstado" >Estado <img class="img" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
+      <label for="inputEstado" >Estado <img class="imgEstado" onclick="teste();" id="imgEstado" style="width: 30px; height: 30px;" src="./img/adicionar.png"></label>
       <select  name="estado" id="estados" class="form-control">
        <!-- <option selected>Escolher...</option> -->
         <!-- <option>...</option> -->

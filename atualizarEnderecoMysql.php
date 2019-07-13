@@ -82,6 +82,9 @@ $cep = teste($_POST["cep"]);
 
 	}
 
+  include("conexao.php");
+
+/*
 	$servername = "localhost";
 	$database = "sistemaDeVendas";
 	$username = "root";
@@ -104,12 +107,49 @@ e_mail_cliente, telefone_cliente) values ('$nome','$cpf','$email','$telefone')";
 ) values ('$nome','$descricaoProduto','$valorCompraProduto','$valorVendaProduto','$quantidade','$data')";
 
 */
+  
+  print_r("<br><br>Teste:<br><br>");
+
+   $sql ="
+select * from tabela_estado, tabela_cidade, tabela_bairro
+WHERE
+tabela_estado.id_estado = tabela_cidade.id_estado
+AND
+tabela_cidade.id_cidade = tabela_bairro.id_cidade
+AND
+tabela_estado.sigla_estado ='$estado'
+AND
+tabela_cidade.nome_cidade = '$cidades'
+AND
+tabela_bairro.nome_bairro='$bairro'
+
+";
+
+  $resultado = mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
+
+
+  // Obtendo os dados por meio de um loop while
+ while ($registro1 = mysqli_fetch_array($resultado))
+ {
+   $nomeEstado = $registro1['nome_estado'];
+   $nomeCidade = $registro1['nome_cidade'];
+   $idBairro = $registro1['id_bairro'];
+   $precoDeCompraProduto = $registro1[''];
+
+   } // while
+
+   print_r("Nome do Estado: ".$nomeCidade ."<br>");
+
+   print_r("Id do bairro: ".$idBairro."<br>");   
+
 
     $endereco = utf8_decode($endereco);
 
-    $sql ="UPDATE tabela_descricao_rua SET nome_da_rua = '$endereco' WHERE id_descricao_rua ='$id'";
+    $sql ="UPDATE tabela_descricao_rua SET nome_da_rua = '$endereco',
+      id_bairro = '$idBairro'
+     WHERE id_descricao_rua ='$id'";
  
-    mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
+    mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar rua");
 
     $id =  mysqli_insert_id($conn);
 
@@ -117,7 +157,7 @@ e_mail_cliente, telefone_cliente) values ('$nome','$cpf','$email','$telefone')";
  
 
     
-    $sql1 = "select * from tabela_produto where id_produto ='$idProduto'";
+    //$sql1 = "select * from tabela_produto where id_produto ='$idProduto'";
   
   $resultado1 = mysqli_query($conn,$sql1) or die("Erro ao retornar dados");
 

@@ -58,7 +58,8 @@ mysqli_query($conn,'SET character_set_results=utf8');
 
 
  				if ($cont==1) {
- 					echo "<option> ". "estado" . "</option>"; 
+ 					//
+ 					//echo "<option> ". "estado" . "</option>"; 
  					$cont++;
  				}
  				 
@@ -77,11 +78,13 @@ mysqli_query($conn,'SET character_set_results=utf8');
 
  
 $nome = $registro['nome_estado'];
-   
+$sigla = $registro['sigla_estado'];   
    
 
-  	 			echo "<option> ". $nome . "</option>";   
+  	 			echo "<option value=" .$sigla . ">".$nome."</option>";   
  
+
+
   	 			 $contador = $contador + 1;	
  				 
    

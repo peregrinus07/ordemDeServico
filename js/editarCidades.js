@@ -1,6 +1,6 @@
 
 
-
+  
 
   function teste(){
  
@@ -24,10 +24,14 @@
           success: function(data)
                 {
                   console.log(data);
+
+                    $("#bairro").html("<option>Selecione uma Cidade</option>");
+                    $("#cidades").html("<option>Selecione uma Cidade</option>");
                     $("#estados").css({'display':'block'});
                     $("#estados").html("");
                     $("#estados").html(data);
-                    
+                    $("#bairro").html("<option>Selecione uma Cidade</option>");
+                    $("#cidades").html("<option>Selecione uma Cidade</option>");
                 },
 
                  error: function(data)
@@ -46,6 +50,8 @@
   } //
 
  
+
+
   function carregarBairros(){
 
   
@@ -158,11 +164,33 @@
   } // function
 
 
+  function carregarEstados(){
+
+      $( ".imgEstado" ).click(function() {
+
+        //alert();
+
+      }); // click
+
+
+  } //
+
+
+
 $( document ).ready(function() {
   
+  $( ".imgEstado" ).click(function() {
+
+        alert();
+
+      }); // click
+
+
+
   
   carregarBairros();
   carregarCidades();
+  carregarEstados();
   
  $("#estados").change(function() {
     //$('#pesquisaCliente').keyup(function(){
