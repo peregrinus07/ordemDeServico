@@ -92,6 +92,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 <head>
   <title>Listar Cidades</title>
 <meta charset="UTF-8">
+
    <!-- Latest compiled and minified CSS -->
    <!--
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -402,16 +403,16 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
  
   $nomeTeste = $registro['nome_da_rua'];
 
-   $nome = utf8_decode($registro['nome_da_rua']);
+   $nome = $registro['nome_da_rua'];
 
-   $nome2 = utf8_encode($nomeTeste);
+   $nome2 = $nomeTeste;
 
-
+ 
    echo "<tr>";    
    echo "<td> ".$registro['nome_estado']."</td>";
    echo "<td> ".$registro['nome_cidade'] ."</td>";
    echo "<td> ".$registro['nome_bairro'] ."</td>";   
-   echo "<td> ".$nomeTeste . "</td>";   
+   echo "<td> ".$nome2 . "</td>";   
    echo "<td> 
    <a href='deletarRua.php?rua=$idRua'><button type='button' class='btn btn-primary'>Deletar</button></a>
    <a id='$idRua' onclick='modal(this.id);' href='#?usuario=$idRua&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>

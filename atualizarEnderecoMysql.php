@@ -138,19 +138,28 @@ tabela_bairro.nome_bairro='$bairro'
 
    } // while
 
-   print_r("Nome do Estado: ".$nomeCidade ."<br>");
+   print_r("Nome do Cidade: ".$nomeCidade ."<br>");
 
    print_r("Id do bairro: ".$idBairro."<br>");   
 
+    $end = $endereco;
 
     $endereco = utf8_decode($endereco);
 
-    $sql ="UPDATE tabela_descricao_rua SET nome_da_rua = '$endereco',
+     $sql1 ="UPDATE tabela_descricao_rua SET nome_da_rua = '$end',
       id_bairro = '$idBairro'
-     WHERE id_descricao_rua ='$id'";
+     WHERE id_descricao_rua ='$id'";  
  
-    mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar rua");
+     $sql ="UPDATE tabela_descricao_rua SET nome_da_rua = '$end', id_bairro = '2' WHERE id_descricao_rua ='$id'";
+     
+  
 
+
+    mysqli_query($conn,$sql1) or die("<br>Erro ao tentar cadastrar rua");
+
+
+
+/*
     $id =  mysqli_insert_id($conn);
 
     printf (" id: %d.\n", mysqli_insert_id($conn));

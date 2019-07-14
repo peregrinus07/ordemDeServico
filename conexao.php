@@ -59,8 +59,8 @@
       echo "";
     }
 
-
-
+mysqli_set_charset($conn, "utf8");
+ 
      // if
      //echo "<br>Connected successfully";
  
