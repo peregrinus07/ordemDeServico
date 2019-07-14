@@ -31,7 +31,8 @@ mysqli_query($conn,'SET character_set_client=utf8');
 
 mysqli_query($conn,'SET character_set_results=utf8'); 
 
-  	 $sql = "select * from tabela_descricao_rua,tabela_bairro, tabela_cidade, tabela_estado WHERE tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade AND tabela_cidade.id_estado = tabela_estado.id_estado";
+  	 $sql = "select * from tabela_descricao_rua, tabela_cep_rua,tabela_bairro, tabela_cidade, tabela_estado WHERE tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade AND tabela_cidade.id_estado = tabela_estado.id_estado
+AND tabela_descricao_rua.id_descricao_rua = tabela_cep_rua.id_rua";
 
  	 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
  
@@ -39,9 +40,9 @@ mysqli_query($conn,'SET character_set_results=utf8');
     $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
 
     //seleciona todos os itens da tabela 
-    $cmd = "select * from tabela_descricao_rua,tabela_bairro, tabela_cidade, tabela_estado
-WHERE tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade
-AND tabela_cidade.id_estado = tabela_estado.id_estado"; 
+    $cmd = "select * from tabela_descricao_rua, tabela_cep_rua,tabela_bairro, tabela_cidade, tabela_estado WHERE tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade AND tabela_cidade.id_estado = tabela_estado.id_estado
+AND tabela_descricao_rua.id_descricao_rua = tabela_cep_rua.id_rua
+"; 
     $produtos = mysqli_query($conn,$cmd) or die("Erro ao retornar dados");
 
     //conta o total de itens 
@@ -57,11 +58,9 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado";
     $inicio = ($registros*$pagina)-$registros;
 
     //seleciona os itens por página 
-    $cmd = "select * from tabela_descricao_rua,tabela_bairro, tabela_cidade, tabela_estado WHERE
-tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
-AND tabela_bairro.id_cidade = tabela_cidade.id_cidade
-AND tabela_cidade.id_estado = tabela_estado.id_estado
-  limit $inicio,$registros"; 
+    $cmd = "select * from tabela_descricao_rua, tabela_cep_rua,tabela_bairro, tabela_cidade, tabela_estado WHERE tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro AND tabela_bairro.id_cidade = tabela_cidade.id_cidade AND tabela_cidade.id_estado = tabela_estado.id_estado
+AND tabela_descricao_rua.id_descricao_rua = tabela_cep_rua.id_rua
+limit $inicio,$registros"; 
     $produtos = mysqli_query($conn,$cmd) or die("Erro ao retornar dados"); 
     $total = $produtos->num_rows;
 
@@ -379,6 +378,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
         <th>Cidade</th>
         <th>Bairro</th>
         <th>Rua</th>
+        <th>Cep</th>
         <th>Opsções</th>
       </tr>
     </thead>
@@ -405,6 +405,8 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 
    $nome = $registro['nome_da_rua'];
 
+   $cep = $registro['cep_rua'];
+
    $nome2 = $nomeTeste;
 
  
@@ -413,6 +415,8 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
    echo "<td> ".$registro['nome_cidade'] ."</td>";
    echo "<td> ".$registro['nome_bairro'] ."</td>";   
    echo "<td> ".$nome2 . "</td>";   
+    
+   echo "<td> ".$cep . "</td>";   
    echo "<td> 
    <a href='deletarRua.php?rua=$idRua'><button type='button' class='btn btn-primary'>Deletar</button></a>
    <a id='$idRua' onclick='modal(this.id);' href='#?usuario=$idRua&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
