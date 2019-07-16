@@ -451,7 +451,7 @@ $ceps = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
  } // while
 
     if ($cep =="") {
-      $cep ="vazio";
+      $cep ="";
     }
 
 

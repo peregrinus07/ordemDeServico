@@ -45,6 +45,28 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 ";
  	 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
+
+$sql1 ="select * from tabela_descricao_rua, tabela_cep_rua
+where
+tabela_descricao_rua.id_descricao_rua ='$id'
+AND
+tabela_descricao_rua.id_descricao_rua = tabela_cep_rua.id_rua
+
+";
+
+$ceps = mysqli_query($conn,$sql1) or die("Erro ao retornar dados"); 
+
+  while ($reg = mysqli_fetch_array($ceps))
+ { 
+
+    $cep = $reg['cep_rua'];
+
+
+ } // while
+
+
+
+
  	  while ($registro = mysqli_fetch_array($resultado))
    {
 
@@ -63,6 +85,21 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 		$cpfCnpjCliente = $registro["cpf_cnpj_cliente"];
 		$emailCliente = $registro["e_mail_cliente"];
 		$telefoneCliente = $registro["telefone_cliente"];
+
+
+
+$ceps = mysqli_query($conn,$sql1) or die("Erro ao retornar dados"); 
+
+  while ($reg = mysqli_fetch_array($ceps))
+ { 
+
+    $cep = $reg['cep_rua'];
+
+
+ } // while
+
+
+
 
 	//	echo "telefone cliente: " .$telefoneCliente;
 
@@ -379,7 +416,7 @@ AND tabela_cidade.id_estado = tabela_estado.id_estado
 
       <div class="form-group col-md-6">
       <label for="inputCEP">CEP</label>
-       <input type="text" class="form-control" name="cep" id="cep">
+       <input type="text" value="<?php print_r("$cep") ?>" class="form-control" name="cep" id="cep">
     </div>
     
         <div class="form-group col-md-12"> 
