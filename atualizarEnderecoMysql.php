@@ -150,14 +150,76 @@ tabela_bairro.nome_bairro='$bairro'
       id_bairro = '$idBairro'
      WHERE id_descricao_rua ='$id'";  
  
+$sql3 ="select count(id_cep_rua) AS total from tabela_cep_rua where id_rua='$id';
+";  
+
+
      $sql ="UPDATE tabela_descricao_rua SET nome_da_rua = '$end', id_bairro = '2' WHERE id_descricao_rua ='$id'";
-     
+ 
+     mysqli_query($conn,$sql1) or die("<br>Erro ao tentar cadastrar rua");
+
+//    $conta_linhas = mysqli_num_rows($conn,$sql3);
+
+
+
+
+   $ceprua = mysqli_query($conn,$sql3) or die("<br>Erro ao tentar cadastrar rua");
+ 
+
+   
+   $value = mysqli_fetch_assoc($ceprua); 
+
+   $numRows = $value['total'];
+
+
+   print_r("<br>Resultado: " .$numRows);
+
+
+   if($numRows == 1){
+
+      if($cep =="" || $cep =="a"){
+          $cep ="-";
+      } //
+
+      print_r("<br> cep atualizado");
+
+      $sql2 ="UPDATE tabela_cep_rua SET cep_rua = '$cep'
+     WHERE id_rua ='$id'";  
+
+    mysqli_query($conn,$sql2) or die("<br>Erro ao tentar cadastrar rua");
+
+
+   }//
+
+   if($numRows == 0){
+
+      if($cep =="a"){
+         $cep ="-";
+      }
+
+      print_r("<br>id rua: ".$id);
+      print_r("<br>cep rua: ".$cep);
+
+      $sql ="INSERT INTO tabela_cep_rua (  id_rua, cep_rua) values ('$id','$cep')";
+
+
+     mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar cep");
+
+      print_r("<br> cadastrado cep");
+
+   } //
+
+
+
+
+
+
+   // mysqli_query($conn,$sql1) or die("<br>Erro ao tentar cadastrar rua");
   
+ 
+ //   mysqli_query($conn,$sql2) or die("<br>Erro ao tentar cadastrar cep");
 
-
-    mysqli_query($conn,$sql1) or die("<br>Erro ao tentar cadastrar rua");
-
-
+ 
 
 /*
     $id =  mysqli_insert_id($conn);
