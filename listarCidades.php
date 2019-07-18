@@ -31,7 +31,7 @@ mysqli_query($conn,'SET character_set_client=utf8');
 
 mysqli_query($conn,'SET character_set_results=utf8'); 
 
-  	 $sql = "select * from tabela_descricao_rua, tabela_cep_rua,
+  	 $sql = "select * from tabela_descricao_rua,
 tabela_bairro, tabela_cidade, tabela_estado 
 WHERE 
 tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro 
@@ -48,7 +48,7 @@ tabela_cidade.id_estado = tabela_estado.id_estado
     $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
 
     //seleciona todos os itens da tabela 
-    $cmd = "select * from tabela_descricao_rua, tabela_cep_rua,
+    $cmd = "select * from tabela_descricao_rua, 
 tabela_bairro, tabela_cidade, tabela_estado 
 WHERE 
 tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro 
@@ -73,7 +73,7 @@ tabela_cidade.id_estado = tabela_estado.id_estado
     $inicio = ($registros*$pagina)-$registros;
 
     //seleciona os itens por página 
-    $cmd = "select * from tabela_descricao_rua, tabela_cep_rua,
+    $cmd = "select * from tabela_descricao_rua, 
 tabela_bairro, tabela_cidade, tabela_estado 
 WHERE 
 tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro 
