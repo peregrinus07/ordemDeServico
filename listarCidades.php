@@ -396,6 +396,7 @@ limit $inicio,$registros";
   
   <thead>
       <tr>
+        <th>Id Rua</th>
         <th>Estado</th>
         <th>Cidade</th>
         <th>Bairro</th>
@@ -415,6 +416,19 @@ limit $inicio,$registros";
    
 <?php
 
+  function cep($idRua){
+
+     //include("conexao.php");
+
+ 
+
+
+
+    return $idRua;  //print_r($idRua);
+
+  }//
+
+
 
      
       // Obtendo os dados por meio de um loop while
@@ -430,36 +444,57 @@ limit $inicio,$registros";
    //$cep = $registro['cep_rua'];
  
    $nome2 = $nomeTeste;
+    // $cep ="0.0.0.0.0.0";
 
 
-   $sql ="select * from tabela_descricao_rua, tabela_cep_rua
+
+$sql3 ="select count(id_cep_rua) AS total from tabela_cep_rua where id_rua='$idRua';
+";  
+
+   $ceprua = mysqli_query($conn,$sql3) or die("<br>Erro ao tentar cadastrar rua");
+
+    $value = mysqli_fetch_assoc($ceprua); 
+
+   $numRows = $value['total'];
+
+   if($numRows == 1){
+
+       $cep ="a";
+          $sql ="select * from tabela_cep_rua
 where
-tabela_descricao_rua.id_descricao_rua ='$idRua'
-AND
-tabela_descricao_rua.id_descricao_rua = tabela_cep_rua.id_rua
-
+tabela_cep_rua.id_rua ='$idRua'
 ";
 
+
 $ceps = mysqli_query($conn,$sql) or die("Erro ao retornar dados"); 
+
+
 
   while ($reg = mysqli_fetch_array($ceps))
  { 
 
+    $idCepRua = $reg['id_rua'];
     $cep = $reg['cep_rua'];
-
-
+  
  } // while
+    
 
-    if ($cep =="") {
-      $cep ="";
+
+    } 
+    else{
+      $cep="-";
     }
 
 
+   //$cep = cep($idRua);
 
-   // $cep ="0.0.0.0.0.0";
 
-   
+
+
+
+
    echo "<tr>";    
+   echo "<td> ".$idRua."</td>";
    echo "<td> ".$registro['nome_estado']."</td>";
    echo "<td> ".$registro['nome_cidade'] ."</td>";
    echo "<td> ".$registro['nome_bairro'] ."</td>";   
