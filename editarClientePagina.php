@@ -34,13 +34,59 @@ if (!$conn) {
 		$cpfCnpjCliente = $registro["cpf_cnpj_cliente"];
 		$emailCliente = $registro["e_mail_cliente"];
 		$telefoneCliente = $registro["telefone_cliente"];
-
+ 
 	//	echo "telefone cliente: " .$telefoneCliente;
 
    		//echo $idCliente ."<br>";
 		//echo $nomeCliente ."<br>";
 
-}
+  
+} // while
+
+
+  $sql ="SELECT * from tabela_endereco_cliente
+where fk_id_cliente ='$idCliente'
+";
+
+$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
+
+ while ($registro = mysqli_fetch_array($resultado))
+   {
+       $idRua = $registro["fk_id_rua"];
+   }
+
+
+$sql ="
+select * from tabela_descricao_rua, tabela_bairro, tabela_cidade, tabela_estado,
+tabela_cep_rua
+where
+tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+AND
+tabela_bairro.id_cidade = tabela_cidade.id_cidade
+AND
+tabela_estado.id_estado = tabela_cidade.id_estado
+AND
+tabela_descricao_rua.id_descricao_rua = tabela_cep_rua.id_rua
+AND
+tabela_descricao_rua.id_descricao_rua='$idRua'";
+
+
+$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
+
+ while ($registro = mysqli_fetch_array($resultado))
+   {
+       $rua = $registro["nome_da_rua"];
+       $bairro = $registro["nome_bairro"];
+       $cidade = $registro["nome_cidade"];
+       $estado = $registro["nome_estado"];
+       $siglaEstado = $registro["sigla_estado"];
+       $cep = $registro["cep_rua"];
+   }
+
+  //print_r("id: ".$idCliente);
+
+  //print_r("id da rua: ".$idRua." :".$rua." Bairro :".$bairro);
+
 
 ?>
 
@@ -323,53 +369,28 @@ if (!$conn) {
      <div class="form-group col-md-4">
       <label for="inputEstado">Estado</label>
       <select name="estado" id="estados" class="form-control">
-        <option id="estados2" selected>Escolher...</option>
-        <option value="AC">Acre</option>
-  <option value="AL">Alagoas</option>
-  <option value="AP">Amapá</option>
-  <option value="AM">Amazonas</option>
-  <option value="BA">Bahia</option>
-  <option value="CE">Ceará</option>
-  <option value="DF">Distrito Federal</option>
-  <option value="ES">Espírito Santo</option>
-  <option value="GO">Goiás</option>
-  <option value="MA">Maranhão</option>
-  <option value="MT">Mato Grosso</option>
-  <option value="MS">Mato Grosso do Sul</option>
-  <option value="MG">Minas Gerais</option>
-  <option value="PA">Pará</option>
-  <option value="PB">Paraíba</option>
-  <option value="PR">Paraná</option>
-  <option value="PE">Pernambuco</option>
-  <option value="PI">Piauí</option>
-  <option value="RJ">Rio de Janeiro</option>
-  <option value="RN">Rio Grande do Norte</option>
-  <option value="RS">Rio Grande do Sul</option>
-  <option value="RO">Rondônia</option>
-  <option value="RR">Roraima</option>
-  <option value="SC">Santa Catarina</option>
-  <option value="SP">São Paulo</option>
-  <option value="SE">Sergipe</option>
-<option value="TO">Tocantins</option>
+         <option value="<?php print_r($siglaEstado) ?>"><?php print_r($estado) ?></option>
       </select>
 
 </div> <!-- linha -->
 
       <div class="form-group col-md-4">
       <label for="inputCity">Cidade</label>
-      <select id="cidades" name="cidades" class="form-control"></select>
+      <select id="cidades" name="cidades" class="form-control">
+        <option value="<?php print_r($cidade) ?>"><?php print_r($cidade) ?></option>
+      </select>
      </div>
 
       <div class="form-group col-md-4">
       <label for="inputCity">Bairro</label>
       <select id="bairro" name="bairro" class="form-control">
-       
+       <option value="<?php print_r($bairro) ?>"><?php print_r($bairro) ?></option>
       </select>
       </div>
 
 <div class="form-group col-md-6">
     <label for="inputAddress">Endereço</label>
-    <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Rua dos Bobos, nº 0">
+    <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Rua dos Bobos, nº 0" value="<?php print_r($rua) ?>"> 
   </div>
 
   <div class="form-group col-md-2">
@@ -379,7 +400,7 @@ if (!$conn) {
   
  <div class="form-group col-md-4">
       <label for="inputCEP">CEP</label>
-      <input type="text" class="form-control" name="cep" id="cep">
+      <input type="text" class="form-control" name="cep" id="cep" value="<?php print_r($cep) ?>">
 
       <input type="hidden" name="id" value="<php echo $idCliente; ?>" />
 
