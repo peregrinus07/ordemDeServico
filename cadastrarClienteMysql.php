@@ -97,6 +97,42 @@ e_mail_cliente, telefone_cliente) values ('$nome','$cpf','$email','$telefone')";
 
      mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
 
+     $idCliente =mysqli_insert_id($conn);
+
+     print_r("<br>id do cliente: ".$idCliente); 					
+     $sql ="select * from tabela_descricao_rua, tabela_bairro, tabela_cidade, tabela_estado 
+where
+tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+AND
+tabela_bairro.id_cidade = tabela_cidade.id_cidade
+AND
+tabela_estado.id_estado = tabela_cidade.id_estado
+AND
+tabela_descricao_rua.nome_da_rua='$endereco'
+and
+tabela_bairro.nome_bairro='$bairro'";				
+	$resultado  = mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
+
+
+	while ($registro = mysqli_fetch_array($resultado))
+   {
+   	   $idRua = $registro["id_descricao_rua"];
+       $rua = $registro["nome_da_rua"];
+       $bairro = $registro["nome_bairro"];
+       $cidade = $registro["nome_cidade"];
+       $estado = $registro["nome_estado"];
+       $siglaEstado = $registro["sigla_estado"];
+       $cep = $registro["cep_rua"];
+   }("rua: ".$rua);
+
+  	   print_r("<br>Id: ".$idRua); 
+   	   print_r("<br>rua: ".$rua);
+   	   print_r("<br>Bairro: ".$bairro);
+
+   	   $sql="INSERT INTO tabela_endereco_cliente
+ (fk_id_rua, fk_id_cliente ,numero_endereco_cliente) values ('$idRua','$idCliente','$numero')";
+
+ 	   mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
 
    //printf (" id: %d.\n", mysqli_insert_id($conn));
      //$variavel = mysqli_insert_id;
