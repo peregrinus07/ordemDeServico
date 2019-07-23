@@ -110,7 +110,12 @@ tabela_estado.id_estado = tabela_cidade.id_estado
 AND
 tabela_descricao_rua.nome_da_rua='$endereco'
 and
-tabela_bairro.nome_bairro='$bairro'";				
+tabela_bairro.nome_bairro='$bairro'
+and
+tabela_cidade.nome_cidade='$cidade'
+order by tabela_descricao_rua.id_descricao_rua ASC  
+limit 1
+";				
 	$resultado  = mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
 
 
@@ -125,14 +130,14 @@ tabela_bairro.nome_bairro='$bairro'";
        $cep = $registro["cep_rua"];
    }("rua: ".$rua);
 
-  	   print_r("<br>Id: ".$idRua); 
+  	   print_r("<br>Id da rua: ".$idRua); 
    	   print_r("<br>rua: ".$rua);
    	   print_r("<br>Bairro: ".$bairro);
 
    	   $sql="INSERT INTO tabela_endereco_cliente
  (fk_id_rua, fk_id_cliente ,numero_endereco_cliente) values ('$idRua','$idCliente','$numero')";
 
- 	   mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
+ 	   mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar endereco cliente");
 
    //printf (" id: %d.\n", mysqli_insert_id($conn));
      //$variavel = mysqli_insert_id;
