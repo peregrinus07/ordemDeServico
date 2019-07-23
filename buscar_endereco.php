@@ -7,8 +7,8 @@
     
 
 	$bairroSelecionado = $_GET["teste"];
-	$rua = utf8_decode($_GET["rua"]);
-
+	//$rua = utf8_decode($_GET["rua"]);
+	$rua = $_GET["rua"];
 
 /*
 	 $servername = "localhost";
@@ -45,7 +45,11 @@ tabela_descricao_rua on tabela_bairro.id_bairro = tabela_descricao_rua.id_bairro
 	 // Obtendo os dados por meio de um loop while
 	 while ($registro = mysqli_fetch_array($resultado))
  	{
- 			$rua = utf8_encode($registro['nome_da_rua']);
+ 			//$rua = utf8_encode($registro['nome_da_rua']);
+
+
+		$rua = $registro['nome_da_rua'];
+
 
  			$data[] .= $rua  ; 	
 

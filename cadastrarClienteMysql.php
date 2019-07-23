@@ -7,13 +7,13 @@
  
 	include_once("./funcoes/funcoes.php");
 
-	$nome = $_POST["nomeCliente"];
-	$email = $_POST["email"];
+	$nome = teste($_POST["nomeCliente"]);
+	$email = teste($_POST["email"]);
 	//$rg = $_POST["rg"];
-	$telefone = $_POST["telefone"];
-	$cpf = $_POST["cpf"];
-	$endereco = $_POST["endereco"];
-	$numero = $_POST["numero"];
+	$telefone = teste($_POST["telefone"]);
+	$cpf = teste($_POST["cpf"]);
+	$endereco = teste($_POST["endereco"]);
+	$numero = teste($_POST["numero"]);
 	$estado = teste($_POST["estado"]);
 	
 	if(empty($_POST["cidades"])){
