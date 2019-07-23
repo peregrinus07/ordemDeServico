@@ -1,83 +1,22 @@
 <?php
- 
-	//echo "Exercitando a programação em PHP"; 
-  
 
-/*
-$servername = "localhost";
-$database = "sistemaDeVendas";
-$username = "root";
-$password = "tibe";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-//echo "<br>Connected successfully";
-*/
-    include_once("conexao.php");
+		include("conexao.php");
+		include("funcoes/funcoes.php");
 
-  	 $sql = "SELECT * FROM tabela_clientes";
- 	 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
- 
-    //verifica a página atual caso seja informada na URL, senão atribui como 1ª página 
-    $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
+		$id = teste($_GET['id']);
 
-    //seleciona todos os itens da tabela 
-    $cmd = "select * from tabela_clientes"; 
-    $produtos = mysqli_query($conn,$cmd) or die("Erro ao retornar dados");
+		//print_r("id: ".$id);
 
-    //conta o total de itens 
-    $total = $produtos->num_rows; 
+ ?>
 
-    //seta a quantidade de itens por página, neste caso, 2 itens 
-    $registros = 5; 
-  
-    //calcula o número de páginas arredondando o resultado para cima 
-    $numPaginas = ceil($total/$registros); 
-
-    //variavel para calcular o início da visualização com base na página atual 
-    $inicio = ($registros*$pagina)-$registros;
-
-    //seleciona os itens por página 
-    $cmd = "select * from tabela_clientes limit $inicio,$registros"; 
-    $produtos = mysqli_query($conn,$cmd) or die("Erro ao retornar dados"); 
-    $total = $produtos->num_rows;
-
-
-	mysqli_close($conn);
- 
-/*
-	 // Obtendo os dados por meio de um loop while
- while ($registro = mysqli_fetch_array($resultado))
- {
-   $nome = $registro['nome_cliente'];
-   
-   echo "<br>";
-   echo "<br>";
-   echo "<tr>";
-   echo "<td> nome do cliente: ".$nome."</td>";
-   echo "</tr>";
-   echo "<br>";
- }
- mysqli_close($strcon);
- echo "</table>";
-  */
-
-?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Teste</title>
+  <title>Detalhar Cliente</title>
+<meta charset="UTF-8">
 
-   <!-- Latest compiled and minified CSS -->
-   <!--
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
--->   
-
- <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
    
    <!-- Latest compiled and minified CSS -->
    <!--
@@ -330,7 +269,7 @@ if (!$conn) {
 <body>
 <div class="container">
 
-   
+
     <?php include("menu.php"); ?>
    
 
@@ -341,7 +280,7 @@ if (!$conn) {
   <h2><a href="index.php">Voltar</a></h2>
  -->
 
- 	<h3>Lista de clientes</h3>
+ 	<h3>Detalhar Cliente</h3>
  	<br>
 
  <div class="row">
@@ -354,8 +293,12 @@ if (!$conn) {
   
   <thead>
       <tr>
-        <th>Id do Cliente</th>
-        <th>Nome do Cliente</th>
+        <th>Id Cliente</th>
+        <th>Nome</th>
+        <th>E-Mail</th>
+        <th>Telefone</th>
+        <th>Cpf</th>
+        <th>Estado - UF</th>
         <th>Opsções</th>
       </tr>
     </thead>
@@ -366,26 +309,124 @@ if (!$conn) {
     <td>Opsções</td>
   </tr>
 -->
+
+   
 <?php
+
+   //print_r($idRua);
+$sql = "select * from tabela_clientes, tabela_endereco_cliente 
+WHERE
+tabela_clientes.id_cliente ='$id'
+and
+tabela_clientes.id_cliente = tabela_endereco_cliente.fk_id_cliente    
+";
+
+$result_query = mysqli_query($conn,$sql ) or die(' Erro na query:');
+  
+
+//$cidade = mysqli_query($conn,$sql) or die("Erro ao retornar dados"); 
+ 
+
+ while ($row = mysqli_fetch_array($result_query))
+ { 
+ 
+   $nome = $row['nome_cliente'];
+   //$idRua = $registro['id_descricao_rua'];
+ 
+   $idCliente = $row['id_cliente'];
+   
+  $fk_id_cliente = $row['fk_id_cliente'];
+
+   $fk_rua = $row['fk_id_rua'];
+
+  $idRua = $row['id_descricao_rua'];	
+
+    //print_r("Id rua: ".$fk_rua);
+
+   //$cep = $registro['cep_rua'];
+  
+
+  $nome2 = $nomeTeste;
+    // $cep ="0.0.0.0.0.0";
+
+   
+$sql3 ="select count(id_endereco_cliente) AS total from tabela_endereco_cliente where fk_id_cliente='1'
+";
+
+  
+
+   $endereco = mysqli_query($conn,$sql3) or die("<br>Erro ao tentar cadastrar rua");
+
+
+    $value = mysqli_fetch_assoc($endereco); 
+
+   $numRows = $value['total'];
+
+   if($numRows == 1){
+
+       $cep ="a";
+          $sql ="
+select * from tabela_endereco_cliente, tabela_descricao_rua, tabela_bairro,
+tabela_cidade, tabela_estado
+where
+tabela_endereco_cliente.fk_id_rua = '$fk_rua'
+and
+tabela_endereco_cliente.fk_id_cliente='$fk_id_cliente'
+and
+tabela_descricao_rua.id_descricao_rua = tabela_endereco_cliente.fk_id_rua
+and
+tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+and
+tabela_bairro.id_cidade = tabela_cidade.id_cidade
+and
+tabela_cidade.id_estado = tabela_estado.id_estado
+
+";
+
+
+$ceps = mysqli_query($conn,$sql) or die("Erro ao retornar dados"); 
+ 
+  while ($reg = mysqli_fetch_array($ceps))
+ { 
+
+    $estado = $reg['nome_estado'];
+    $sigla_estado = $reg['sigla_estado'];
+    $cep = $reg['cep_rua'];
+  
+ } // while
      
-      // Obtendo os dados por meio de um loop while
- while ($registro = mysqli_fetch_array($produtos))
- {
-   $nome = $registro['nome_cliente'];
-   $idCliente = $registro['id_cliente'];
+    } 
+    else{
+      $cep="-";
+    }
+
+
+   //$cep = cep($idRua);
+
+
  
    echo "<tr>";    
-   echo "<td> ".$registro['id_cliente'] ."</td>";
-   echo "<td> ".$registro['nome_cliente'] ."</td>";   
-   echo "<td> 
-   <a href='deletarCliente.php?usuario=$idCliente'><button type='button' class='btn btn-primary'>Deletar</button></a>
-   <a id='$idCliente' onclick='modal(this.id);' href='#?usuario=$idCliente&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
-   <a href='detalharCliente.php?id=$idCliente'><button type='button' class='btn btn-danger'>Detalhar</button></a>";
+   echo "<td> ".$idCliente."</td>";
+   echo "<td> ".$row['nome_cliente']."</td>";
+   echo "<td> ".$row['e_mail_cliente'] ."</td>";
+   echo "<td> ".$row['telefone_cliente'] ."</td>";   
+   echo "<td> ".$row['cpf_cnpj_cliente'] . "</td>";   
+      
+   echo "<td> ".$estado." - ".$sigla_estado. "</td>";   
+   
+   /*echo "<td> 
+   <a href='deletarRua.php?rua=$idRua'><button type='button' class='btn btn-primary'>Deletar</button></a>
+   <a id='$idRua' onclick='modal(this.id);' href='#?usuario=$idRua&teste=$nome'> <button type='button' class='btn btn-success'>Editar</button></a>
+   <a href='detalharCidade.php?rua=$idRua
+   '><button type='button' class='btn btn-danger'>Detalhar</button></a>";
    echo "</td>";
    echo "</tr>";
+ */
 
- }
+} // 
 
+  
+      // Obtendo os dados por meio de um loop while
 
 ?>
  
@@ -398,7 +439,7 @@ if (!$conn) {
  <nav aria-label="Navegação de página exemplo">
     <ul class="pagination">
    <?php 
-
+/*
     $paginasPesquisa = ceil($total/$registros); 
     $registros = 2;
 
@@ -472,82 +513,11 @@ if (!$conn) {
 
           } 
 
-
+*/
   ?>
 </ul>
 </nav>
 
-
-
-<!-- modal editar cliente -->
-
-<div id="modal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Editar Cliente</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="conteudo">
-            
-              <p> </p>
-
-          </div>
-         
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary">Salvar mudanças</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-<script>
-  
-  function modal(id){
-
-         //alert(id);
-
-
-        var idProduto = id;
-
-        url = "editarClientePagina.php?id"+idProduto; 
-
-        $.ajax({
-                    url: "editarClientePagina.php?id",
-                    type: "GET",
-                    dataType: "html",
-                    data: {id: idProduto},
-                    success: function(data) {
-                    //called when successful
-
-                    //console.log(data);
-
-                    $("#modal").modal();
-                     $("#conteudo").html(data);
-
-                     
-
-                   
-                    },
-                    error: function(e) {
-                    //called when there is an error
-                    //console.log(e.message);
-                    }
-              });
-      
-                 
-
-     }
-
-
-
-</script>
 
 
 </body>
