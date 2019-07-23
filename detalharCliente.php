@@ -297,7 +297,7 @@
         <th>Nome</th>
         <th>E-Mail</th>
         <th>Telefone</th>
-        <th>Cpf</th>
+        <th>Cpf / Cnpj</th>
         <th>Estado - UF</th>
         <th>Opsções</th>
       </tr>
@@ -366,8 +366,9 @@ $sql3 ="select count(id_endereco_cliente) AS total from tabela_endereco_cliente 
 
        $cep ="a";
           $sql ="
+ 
 select * from tabela_endereco_cliente, tabela_descricao_rua, tabela_bairro,
-tabela_cidade, tabela_estado
+tabela_cidade, tabela_estado, tabela_cep_rua
 where
 tabela_endereco_cliente.fk_id_rua = '$fk_rua'
 and
@@ -380,6 +381,8 @@ and
 tabela_bairro.id_cidade = tabela_cidade.id_cidade
 and
 tabela_cidade.id_estado = tabela_estado.id_estado
+and
+tabela_cep_rua.id_rua = tabela_descricao_rua.id_descricao_rua
 
 ";
 
@@ -391,6 +394,10 @@ $ceps = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
     $estado = $reg['nome_estado'];
     $sigla_estado = $reg['sigla_estado'];
+    $cidade = $reg['nome_cidade'];
+    $bairro = $reg['nome_bairro'];
+    $rua = $reg['nome_da_rua'];
+    $numeroDarua = $reg['numero_endereco_cliente'];
     $cep = $reg['cep_rua'];
   
  } // while
@@ -412,7 +419,7 @@ $ceps = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
    echo "<td> ".$row['telefone_cliente'] ."</td>";   
    echo "<td> ".$row['cpf_cnpj_cliente'] . "</td>";   
       
-   echo "<td> ".$estado." - ".$sigla_estado. "</td>";   
+   echo "<td> ".$sigla_estado. "</td>";   
    
    /*echo "<td> 
    <a href='deletarRua.php?rua=$idRua'><button type='button' class='btn btn-primary'>Deletar</button></a>
@@ -430,6 +437,25 @@ $ceps = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
 ?>
  
+<thead style="margin-top:5%;">
+      <tr>
+        <th>Estado</th>
+        <th>Cidade</th>
+        <th>Bairro</th>
+        <th>Rua</th>
+        <th>Numero</th>
+        <th>Cep</th>
+      </tr>
+      <tr>
+      	<td><?php print_r($estado) ?></td>
+      	<td><?php print_r($cidade) ?></td>
+      	<td><?php print_r($bairro) ?></td>
+      	<td><?php print_r($rua) ?></td>
+      	<td><?php print_r($numeroDarua) ?></td>
+      	<td><?php print_r($cep) ?></td>
+      </tr>
+</thead>
+
 
  </table>
   </div><!-- coluna -->
