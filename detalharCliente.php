@@ -314,11 +314,9 @@
 <?php
 
    //print_r($idRua);
-$sql = "select * from tabela_clientes, tabela_endereco_cliente 
+$sql = "select * from tabela_clientes 
 WHERE
 tabela_clientes.id_cliente ='$id'
-and
-tabela_clientes.id_cliente = tabela_endereco_cliente.fk_id_cliente    
 ";
 
 $result_query = mysqli_query($conn,$sql ) or die(' Erro na query:');
@@ -327,6 +325,34 @@ $result_query = mysqli_query($conn,$sql ) or die(' Erro na query:');
 //$cidade = mysqli_query($conn,$sql) or die("Erro ao retornar dados"); 
  
 
+  $sql_endereco ="  select * from tabela_clientes, tabela_endereco_cliente 
+WHERE
+tabela_clientes.id_cliente='$id' 
+and
+tabela_clientes.id_cliente = tabela_endereco_cliente.fk_id_cliente
+order by tabela_clientes.id_cliente asc limit 1  
+";
+
+  
+$result = mysqli_query($conn,$sql_endereco ) or die(' Erro na query:');
+  
+
+while ($row = mysqli_fetch_array($result))
+ {
+
+
+  $fk_id_cliente = $row['fk_id_cliente'];
+
+   $fk_rua = $row['fk_id_rua'];
+
+
+
+  $idRua = $row['id_descricao_rua'];  
+ 
+ } // while
+
+
+
  while ($row = mysqli_fetch_array($result_query))
  { 
  
@@ -334,13 +360,7 @@ $result_query = mysqli_query($conn,$sql ) or die(' Erro na query:');
    //$idRua = $registro['id_descricao_rua'];
  
    $idCliente = $row['id_cliente'];
-   
-  $fk_id_cliente = $row['fk_id_cliente'];
-
-   $fk_rua = $row['fk_id_rua'];
-
-  $idRua = $row['id_descricao_rua'];	
-
+  
     //print_r("Id rua: ".$fk_rua);
 
    //$cep = $registro['cep_rua'];
@@ -364,7 +384,7 @@ $sql3 ="select count(id_endereco_cliente) AS total from tabela_endereco_cliente 
 
    if($numRows == 1){
 
-       $cep ="a";
+       $cep ="vazio";
           $sql ="
  
 select * from tabela_endereco_cliente, tabela_descricao_rua, tabela_bairro,
@@ -430,7 +450,7 @@ $ceps = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
    echo "</tr>";
  */
 
-} // 
+} // while
 
   
       // Obtendo os dados por meio de um loop while
