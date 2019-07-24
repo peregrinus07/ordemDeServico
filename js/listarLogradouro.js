@@ -13,7 +13,7 @@
 
 	if(estado !=""){
 
-	alert(estado)		
+	//alert(estado)		
 	}
 
 	

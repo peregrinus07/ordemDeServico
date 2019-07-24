@@ -53,12 +53,16 @@ if (!$conn) {
 */
 	include_once("conexao.php");
 
-	$sql ="	select * from tabela_bairro, tabela_cidade, tabela_estado
+	$sql ="select * from tabela_bairro, tabela_cidade, tabela_estado, tabela_descricao_rua
 	where nome_bairro='$bairro'
 	and 
+	tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+	and
+	tabela_descricao_rua.nome_da_rua ='$endereco'
+	and
 	tabela_cidade.nome_cidade='$cidade'
 	and
-	tabela_estado.sigla_estado ='$estado'
+	tabela_estado.sigla_estado ='$estadoSigla'
 	ORDER BY tabela_bairro.id_bairro asc
 	limit 1
   
@@ -69,10 +73,16 @@ if (!$conn) {
 	while ($registro = mysqli_fetch_array($resultado))
  	{
  			$idBairro = $registro["id_bairro"];
-
+ 			$idRua = $registro["id_descricao_rua"]; 
  			echo "Id bairro: " .$registro["id_bairro"];
  		}
 
+
+
+  
+
+ 	print_r("<br>id da rua: ".$idRua."<br>");
+ 	print_r("id da bairro: ".$idBairro."<br>");
 
    //$sql = "DELETE FROM cliente WHERE id_cliente = '$id'";
 
@@ -87,26 +97,57 @@ if (!$conn) {
     $total = mysqli_fetch_assoc($teste);
     $num = "1";
     
+    if($total['total'] == 1){
 
-    if($total > 0){
+    	print_r("<br>");
+    	print_r("<br>");
+    	print_r("<br>Existe cliente cadastrado no endereco");
 
-    	print_r("total: ".$total['total']);
+    	print_r("<br>");
+ 
+    	print_r("total: ".$total['total']);    	
 
-    	$sql ="	UPDATE tabela_endereco_cliente SET numero_endereco_cliente='$numero' WHERE tabela_endereco_cliente.fk_id_cliente='$id'
-";
+        print_r("<br>id da rua: ".$idRua);
+		print_r("<br>id do cliente: ".$id);
+	print_r("<br>numero endereco: ".$numero);
+	   print_r("<br>");
+
+
+    	$sql ="UPDATE  tabela_endereco_cliente
+SET fk_id_cliente='$id', fk_id_rua='$idRua',numero_endereco_cliente='$numero'
+WHERE fk_id_cliente='$id'
+";    	
 
  	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");	
 
-    } // if
-    else{
-    	 print_r("total 3: ".$total['total']);
+    if($resultado){
+    	print_r("<br>endereco atualizado");
     }
+ 
+    } // if
 
-   // Executa o comando SQL
- // $result = mysqli_query($conn,$sql);
 
-     // Verifica se o comando foi executado com sucesso
-  if(!$resultado)
+    if($total['total']==0){
+
+       print_r("total: ".$total['total']);
+      print_r("<br>cliente não cadastraro endereço");
+
+      print_r("<br>id rua: ".$idRua);
+
+      $sql="insert into  tabela_endereco_cliente (fk_id_cliente,fk_id_rua,numero_endereco_cliente) values ('$id','$idRua','$numero')";
+
+      $resultado = mysqli_query($conn,$sql) or die("<br>Erro ao retornar dados");	
+
+      if($resultado){
+		print_r("endereço cliente cadastrado");
+	} // if
+
+
+
+    } //if
+
+
+    if(!$resultado)
 	die("Falha ao executar o comando: " . mysqli_error());
   else
 	echo "<span class='news2'><br>Dados atualizados com sucesso.</span>";
