@@ -372,7 +372,7 @@ while ($row = mysqli_fetch_array($result))
    
 $sql3 ="select count(id_endereco_cliente) AS total from tabela_endereco_cliente where fk_id_cliente='1'
 ";
-
+ 
   
 
    $endereco = mysqli_query($conn,$sql3) or die("<br>Erro ao tentar cadastrar rua");
@@ -385,6 +385,12 @@ $sql3 ="select count(id_endereco_cliente) AS total from tabela_endereco_cliente 
    if($numRows == 1){
 
        $cep ="vazio";
+       $estado="vazio";
+       $sigla_estado="vazio";
+       $cidade="vazio";
+       $bairro="vazio";
+       $rua="vazio";
+       $numeroDarua="vazio";
           $sql ="
  
 select * from tabela_endereco_cliente, tabela_descricao_rua, tabela_bairro,
