@@ -53,6 +53,7 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
  while ($registro = mysqli_fetch_array($resultado))
    {
        $idRua = $registro["fk_id_rua"];
+       $numero_endereco = $registro["numero_endereco_cliente"];
    }
 
 
@@ -395,7 +396,7 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
   <div class="form-group col-md-2">
     <label for="inputAddress">Numero</label>
-    <input type="text" class="form-control" name="numero" id="numero" placeholder="Nº">
+    <input type="text" class="form-control" name="numero" id="numero" placeholder="Nº" value="<?php print_r($numero_endereco) ?>">
   </div>
   
  <div class="form-group col-md-4">

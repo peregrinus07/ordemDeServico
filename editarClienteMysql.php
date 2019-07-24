@@ -33,7 +33,7 @@
 	echo "<br>";
     echo "cep do cliente: " .$cep;
 	echo "<br>";
-    echo "numero do cliente: " .$numero;
+    echo "numero do endereco do cliente: " .$numero;
 	echo "<br>";
     
 	//echo "email: " .$email;
@@ -53,7 +53,16 @@ if (!$conn) {
 */
 	include_once("conexao.php");
 
-	$sql ="select * from tabela_bairro where nome_bairro='$bairro'";
+	$sql ="	select * from tabela_bairro, tabela_cidade, tabela_estado
+	where nome_bairro='$bairro'
+	and 
+	tabela_cidade.nome_cidade='$cidade'
+	and
+	tabela_estado.sigla_estado ='$estado'
+	ORDER BY tabela_bairro.id_bairro asc
+	limit 1
+  
+";
 
 	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
@@ -71,6 +80,27 @@ if (!$conn) {
 
    	// $sql = "SELECT nome_cliente FROM cliente";
     $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
+
+    $sql="select count(id_endereco_cliente) AS total from tabela_endereco_cliente where fk_id_cliente='$id'";
+
+	$teste = mysqli_query($conn,$sql);
+    $total = mysqli_fetch_assoc($teste);
+    $num = "1";
+    
+
+    if($total > 0){
+
+    	print_r("total: ".$total['total']);
+
+    	$sql ="	UPDATE tabela_endereco_cliente SET numero_endereco_cliente='$numero' WHERE tabela_endereco_cliente.fk_id_cliente='$id'
+";
+
+ 	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");	
+
+    } // if
+    else{
+    	 print_r("total 3: ".$total['total']);
+    }
 
    // Executa o comando SQL
  // $result = mysqli_query($conn,$sql);
