@@ -80,7 +80,7 @@ if (!$conn) {
 
 <script src="./js/validarCampos.js"></script>
 
-
+<script src="./js/listarCep.js"></script>
 
   <script type="text/javascript">
   

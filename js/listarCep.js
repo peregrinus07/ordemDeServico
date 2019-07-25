@@ -36,7 +36,7 @@
 
         var rua = $("#endereco").val()
         var teste = $("#bairro option:selected").val();
-
+        var cep = $("#cep").val();
 
  
          //alert(teste);
@@ -63,7 +63,7 @@
 
 
      // fonte dos dados
-     source: "buscar_cep_logradouro.php?rua="+rua+"&teste=" + teste + "",
+     source: "buscar_cep_logradouro.php?rua="+rua+"&teste=" + teste +"&cep="+cep+ "",
 
       });
 

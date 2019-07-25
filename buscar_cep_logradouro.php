@@ -4,11 +4,13 @@
 	 include_once("conexao.php");
 	
 	$cidades = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_STRING);
-    
+     
 
 	$bairroSelecionado = $_GET["teste"];
 	//$rua = utf8_decode($_GET["rua"]);
 	$rua = $_GET["rua"];
+
+	$cep = $_GET["cep"];
 
 /*
 	 $servername = "localhost";
@@ -60,7 +62,7 @@ tabela_descricao_rua on tabela_bairro.id_bairro = tabela_descricao_rua.id_bairro
  	and
  	tabela_descricao_rua.nome_da_rua like '%$rua%'
 	and
-	tabela_cep_rua.cep_rua like '%1%'
+	tabela_cep_rua.cep_rua like '%$cep%'
 	order by tabela_descricao_rua.nome_da_rua asc";
 
 	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
