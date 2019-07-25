@@ -139,7 +139,7 @@ WHERE fk_id_cliente='$id'
     } //if
 
     $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");	
-   
+    
     if(!$resultado)
 	die("Falha ao executar o comando: " . mysqli_error());
   else

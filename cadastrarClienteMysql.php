@@ -30,7 +30,7 @@
 		else{
 			$bairro = $_POST["bairro"];		
 		}
-	$cep = $_POST["cep"];
+	$cep = teste($_POST["cep"]);
 
 	$data = date("Y-m-d H:i:s");
 
@@ -127,7 +127,7 @@ limit 1
        $cidade = $registro["nome_cidade"];
        $estado = $registro["nome_estado"];
        $siglaEstado = $registro["sigla_estado"];
-       $cep = $registro["cep_rua"];
+       $cep1 = $registro["cep_rua"];
    }("rua: ".$rua);
 
   	   print_r("<br>Id da rua: ".$idRua); 
@@ -135,7 +135,11 @@ limit 1
    	   print_r("<br>Bairro: ".$bairro);
 
    	   $sql="INSERT INTO tabela_endereco_cliente
- (fk_id_rua, fk_id_cliente ,numero_endereco_cliente) values ('$idRua','$idCliente','$numero')";
+ (fk_id_rua, fk_id_cliente ,numero_endereco_cliente,cep_endereco_cliente
+) values ('$idRua','$idCliente','$numero','$cep')";
+
+
+	print_r("<br>Teste ".$cep);
 
  	   mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar endereco cliente");
 
