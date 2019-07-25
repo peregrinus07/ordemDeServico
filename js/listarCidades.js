@@ -149,7 +149,7 @@ $( document ).ready(function() {
 
 
      // fonte dos dados
-     source: "buscar_endereco.php?rua="+rua+"&teste=" + teste + "",
+     source: "buscar_cep_logradouro.php?rua="+rua+"&teste=" + teste + "",
 
       });
 
