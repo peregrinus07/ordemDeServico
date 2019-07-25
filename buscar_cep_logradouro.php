@@ -48,13 +48,26 @@ tabela_descricao_rua on tabela_bairro.id_bairro = tabela_descricao_rua.id_bairro
 	  
 	//$pegarCidades->execute(); 
 
-	$sql ="select * from tabela_descricao_rua";
+	//$sql ="select * from tabela_descricao_rua";
+
+	$sql ="select * from tabela_bairro, tabela_descricao_rua, tabela_cep_rua
+ 	WHERE
+ 	tabela_bairro.id_bairro = tabela_descricao_rua.id_bairro
+ 	and
+ 	tabela_cep_rua.id_rua = tabela_descricao_rua.id_descricao_rua
+ 	and
+ 	tabela_bairro.nome_bairro like '%$bairroSelecionado%'
+ 	and
+ 	tabela_descricao_rua.nome_da_rua like '%$rua%'
+	and
+	tabela_cep_rua.cep_rua like '%1%'
+	order by tabela_descricao_rua.nome_da_rua asc";
 
 	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
  
     //$total = mysqli_query($conn,$sql1) or die("Erro ao retornar dados");
 
-     $contador = 1;
+	$contador = 1;
 	 
 	 // Obtendo os dados por meio de um loop while
 	 while ($registro = mysqli_fetch_array($resultado))
@@ -62,7 +75,7 @@ tabela_descricao_rua on tabela_bairro.id_bairro = tabela_descricao_rua.id_bairro
  			//$rua = utf8_encode($registro['nome_da_rua']);
 
 
-		$rua = $registro['nome_da_rua'];
+		$rua = $registro['cep_rua'];
 
 
  			$data[] .= $rua; 	

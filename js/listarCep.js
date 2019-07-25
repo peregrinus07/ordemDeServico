@@ -9,7 +9,7 @@
 
 
 		 //listar endereços
-      $("#endereco").keyup(function(){
+      $("#cep").keyup(function(){
        // alert("teste");
         // select cidade
         var cidade = $("#cidades option:selected").val();
@@ -56,6 +56,7 @@
 
 
 
+
     //console.log("bairro selecionado: "+teste);
    $("#cep").autocomplete({
     
@@ -66,7 +67,7 @@
 
       });
 
-
+ 
      }); // listar ruas
  
  
