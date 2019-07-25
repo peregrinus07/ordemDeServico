@@ -353,12 +353,16 @@ while ($row = mysqli_fetch_array($result))
 
    $fk_rua = $row['fk_id_rua'];
 
+   $cepCliente = $row[2];
+
    $estado = $row['nome_estado'];
 
   $idRua = $row['id_descricao_rua'];  
  
  } // while
 
+
+ //print_r("cliente ".$cepCliente);
 
 
  while ($row = mysqli_fetch_array($result_query))
@@ -501,7 +505,7 @@ $ceps = mysqli_query($conn,$sql_query) or die("Erro ao retornar dados");
       	<td><?php print_r($bairro) ?></td>
       	<td><?php print_r($rua) ?></td>
       	<td><?php print_r($numeroDarua) ?></td>
-      	<td><?php print_r($cep) ?></td>
+      	<td><?php print_r($cepCliente) ?></td>
       </tr>
 </thead>
 
