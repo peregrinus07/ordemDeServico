@@ -56,19 +56,20 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
    }
 
 
-$sql ="
-select * from tabela_descricao_rua, tabela_bairro, tabela_cidade, tabela_estado,
-tabela_cep_rua
-where
-tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
-AND
-tabela_bairro.id_cidade = tabela_cidade.id_cidade
-AND
-tabela_estado.id_estado = tabela_cidade.id_estado
-AND
-tabela_descricao_rua.id_descricao_rua = tabela_cep_rua.id_rua
-AND
-tabela_descricao_rua.id_descricao_rua='$idRua'";
+$sql ="select * from tabela_clientes, tabela_endereco_cliente, tabela_descricao_rua,
+  tabela_bairro, tabela_cidade, tabela_estado
+  where tabela_clientes.id_cliente='$id'
+  and
+  tabela_clientes.id_cliente = tabela_endereco_cliente.fk_id_cliente
+  and
+  tabela_descricao_rua.id_descricao_rua = tabela_endereco_cliente.fk_id_rua
+  and 
+  tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+  and
+  tabela_cidade.id_cidade = tabela_bairro.id_cidade
+  and
+  tabela_estado.id_estado = tabela_cidade.id_estado
+  order by tabela_clientes.id_cliente asc limit 1";
 
 
 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");

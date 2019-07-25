@@ -136,16 +136,9 @@ WHERE fk_id_cliente='$id'
 
       $sql="insert into  tabela_endereco_cliente (fk_id_cliente,fk_id_rua,numero_endereco_cliente) values ('$id','$idRua','$numero')";
 
-      $resultado = mysqli_query($conn,$sql) or die("<br>Erro ao retornar dados");	
-
-      if($resultado){
-		print_r("endereço cliente cadastrado");
-	} // if
-
-
-
     } //if
 
+    $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");	
 
     if(!$resultado)
 	die("Falha ao executar o comando: " . mysqli_error());

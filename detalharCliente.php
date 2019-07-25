@@ -325,12 +325,20 @@ $result_query = mysqli_query($conn,$sql ) or die(' Erro na query:');
 //$cidade = mysqli_query($conn,$sql) or die("Erro ao retornar dados"); 
  
 
-  $sql_endereco ="  select * from tabela_clientes, tabela_endereco_cliente 
-WHERE
-tabela_clientes.id_cliente='$id' 
-and
-tabela_clientes.id_cliente = tabela_endereco_cliente.fk_id_cliente
-order by tabela_clientes.id_cliente asc limit 1  
+  $sql_endereco ="  select * from tabela_clientes, tabela_endereco_cliente, tabela_descricao_rua,
+  tabela_bairro, tabela_cidade, tabela_estado
+  where tabela_clientes.id_cliente='$id'
+  and
+  tabela_clientes.id_cliente = tabela_endereco_cliente.fk_id_cliente
+  and
+  tabela_descricao_rua.id_descricao_rua = tabela_endereco_cliente.fk_id_rua
+  and 
+  tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+  and
+  tabela_cidade.id_cidade = tabela_bairro.id_cidade
+  and
+  tabela_estado.id_estado = tabela_cidade.id_estado
+  order by tabela_clientes.id_cliente asc limit 1
 ";
 
   
@@ -345,7 +353,7 @@ while ($row = mysqli_fetch_array($result))
 
    $fk_rua = $row['fk_id_rua'];
 
-
+   $estado = $row['nome_estado'];
 
   $idRua = $row['id_descricao_rua'];  
  
@@ -391,6 +399,7 @@ $sql3 ="select count(id_endereco_cliente) AS total from tabela_endereco_cliente 
        $bairro="vazio";
        $rua="vazio";
        $numeroDarua="vazio";
+
           $sql ="
  
 select * from tabela_endereco_cliente, tabela_descricao_rua, tabela_bairro,
@@ -412,8 +421,22 @@ tabela_cep_rua.id_rua = tabela_descricao_rua.id_descricao_rua
 
 ";
 
+  $sql_query =" select * from tabela_clientes, tabela_endereco_cliente, tabela_descricao_rua,
+  tabela_bairro, tabela_cidade, tabela_estado
+  where tabela_clientes.id_cliente='$id'
+  and
+  tabela_clientes.id_cliente = tabela_endereco_cliente.fk_id_cliente
+  and
+  tabela_descricao_rua.id_descricao_rua = tabela_endereco_cliente.fk_id_rua
+  and 
+  tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+  and
+  tabela_cidade.id_cidade = tabela_bairro.id_cidade
+  and
+  tabela_estado.id_estado = tabela_cidade.id_estado
+  order by tabela_clientes.id_cliente asc limit 1";
 
-$ceps = mysqli_query($conn,$sql) or die("Erro ao retornar dados"); 
+$ceps = mysqli_query($conn,$sql_query) or die("Erro ao retornar dados"); 
  
   while ($reg = mysqli_fetch_array($ceps))
  { 
