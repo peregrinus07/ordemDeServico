@@ -355,6 +355,10 @@ while ($row = mysqli_fetch_array($result))
 
    $cepCliente = $row["cep_endereco_cliente"];
 
+   if ($cepCliente =="") {
+      $cepCliente ="vazio";
+   }
+
    $estado = $row['nome_estado'];
 
   $idRua = $row['id_descricao_rua'];  
