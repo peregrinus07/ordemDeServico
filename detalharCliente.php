@@ -353,7 +353,7 @@ while ($row = mysqli_fetch_array($result))
 
    $fk_rua = $row['fk_id_rua'];
 
-   $cepCliente = $row[2];
+   $cepCliente = $row["cep_endereco_cliente"];
 
    $estado = $row['nome_estado'];
 

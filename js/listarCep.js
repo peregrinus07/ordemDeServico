@@ -67,6 +67,7 @@
 
       });
 
+    //console.log("Cep: "+cep);
  
      }); // listar ruas
  
