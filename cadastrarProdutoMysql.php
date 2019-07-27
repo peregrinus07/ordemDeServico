@@ -3,13 +3,15 @@
 
 	//echo 'Hello ' . htmlspecialchars($_POST["name"]) . '!';
 
+  include("funcoes/funcoes.php"); 
+  include("conexao.php");
 	
-	$nome = $_POST["nomeCliente"];
+	$nome = teste($_POST["nomeProduto"]);
 	$precoCompraProduto = $_POST["precoCompraProduto"];
-	$precoProdutoVenda = $_POST["precoProdutoVenda"];
-    $quantidade = $_POST["quantidade"];
-	$data = $_POST["data"];
-	$descricaoProduto = $_POST["descricaoProduto"];
+	$precoProdutoVenda = teste($_POST["precoProdutoVenda"]);
+    $quantidade = teste($_POST["quantidade"]);
+	$data = teste($_POST["data"]);
+	$descricaoProduto = teste($_POST["descricaoProduto"]);
 
 
 	$precoCompraProduto1 = str_replace('.', '',$precoCompraProduto);
@@ -33,6 +35,7 @@
 	echo "Descrição do produto: " .$descricaoProduto;
 	echo "<br>";
 	echo "Data: " .$data;
+  /*
 	echo "<br>";
 	echo "Endereco: " .$endereco;
 	echo "<br>";
@@ -46,21 +49,21 @@
 	echo "<br>";
 	echo "Cep: " .$cep;
 	echo "<br>";
-
+  */
 	echo "$nome";
 
 	if ($nome =="") {
 		echo "vazio: ";
-		echo " $nome";
+		echo "<br> $nome";
 	}
 
 	else {
 
-		echo "Nome: " .$nome;
+		echo "<br>Nome: " .$nome;
 
 
 	}
-
+/*
 	$servername = "localhost";
 	$database = "sistemaDeVendas";
 	$username = "root";
@@ -73,6 +76,7 @@
 	}
 	echo "<br>Connected successfully";
 
+  */
 
   	/* $sql = "INSERT INTO tabela_clientes (nome_cliente,cpf_cnpj_cliente,
 e_mail_cliente, telefone_cliente) values ('$nome','$cpf','$email','$telefone')";

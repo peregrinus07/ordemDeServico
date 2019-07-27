@@ -334,7 +334,7 @@ if (!$conn) {
 
       <div class="form-group col-md-4">
     <label for="inputAddress">Nome do Produto</label>
-    <input type="text" onkeyup="alteraMaiusculo(this);" name="nomeCliente" class="form-control" id="inputAddress" placeholder="">
+    <input type="text" onkeyup="alteraMaiusculo(this);" name="nomeProduto" class="form-control" id="inputAddress" placeholder="">
     </div>
 
 <div class="form-group col-md-4">
