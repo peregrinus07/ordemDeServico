@@ -104,7 +104,55 @@ if (mysqli_query($conn, $sql)) {
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
-mysqli_close($conn);
+
+
+	   $idCliente =mysqli_insert_id($conn);
+
+     print_r("<br>id do usuario: ".$idCliente);
+
+     $sql ="select * from tabela_descricao_rua, tabela_bairro, tabela_cidade, tabela_estado 
+where
+tabela_descricao_rua.id_bairro = tabela_bairro.id_bairro
+AND
+tabela_bairro.id_cidade = tabela_cidade.id_cidade
+AND
+tabela_estado.id_estado = tabela_cidade.id_estado
+AND
+tabela_descricao_rua.nome_da_rua='$endereco'
+and
+tabela_bairro.nome_bairro='$bairro'
+and
+tabela_cidade.nome_cidade='$cidade'
+order by tabela_descricao_rua.id_descricao_rua ASC  
+limit 1
+";				
+	$resultado  = mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
+
+
+	while ($registro = mysqli_fetch_array($resultado))
+   {
+   	   $idRua = $registro["id_descricao_rua"];
+       $rua = $registro["nome_da_rua"];
+       $bairro = $registro["nome_bairro"];
+       $cidade = $registro["nome_cidade"];
+       $estado = $registro["nome_estado"];
+       $siglaEstado = $registro["sigla_estado"];
+       $cep1 = $registro["cep_rua"];
+   }("rua: ".$rua);
+
+  	   print_r("<br>Id da rua: ".$idRua); 
+   	   print_r("<br>rua: ".$rua);
+   	   print_r("<br>Bairro: ".$bairro);
+   	   $sql="INSERT INTO tabela_endereco_usuario
+ (fk_id_rua, fk_id_usuario,numero_endereco_usuario,cep_endereco_usuario
+) values ('$idRua','$idCliente','$numero','$cep')";
+
+	print_r("<br>Teste ".$cep);
+	print_r("<br>Teste ".$idCliente);
+
+ 	   mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar endereco usuario");
+
+
 
  echo "<br>";
   	 
@@ -123,5 +171,6 @@ mysqli_close($conn);
      mysqli_query($conn,$sql) or die("<br>Erro ao tentar cadastrar registro");
 
 */
+     mysqli_close($conn);
 
 ?>
