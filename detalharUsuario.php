@@ -297,6 +297,7 @@
         <th>Nome</th>
         <th>E-Mail</th>
         <th>Telefone</th>
+        <th>Rg</th>
         <th>Cpf / Cnpj</th>
         <th>Estado - UF</th>
         <th>Opsções</th>
@@ -482,6 +483,7 @@ $ceps = mysqli_query($conn,$sql_query) or die("Erro ao retornar dados");
    echo "<td> ".$nome_usuario."</td>";
    echo "<td> ".$email ."</td>";
    echo "<td> ".$telefone ."</td>";   
+   echo "<td> ".$rg ."</td>";   
    echo "<td> ".$cpf . "</td>";   
       
    echo "<td> ".$sigla_estado. "</td>";   
