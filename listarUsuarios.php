@@ -485,7 +485,7 @@ if (!$conn) {
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Editar Cliente</h5>
+          <h5 class="modal-title">Editar Usuário</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -516,10 +516,10 @@ if (!$conn) {
 
         var idProduto = id;
 
-        url = "editarClientePagina.php?id"+idProduto; 
+        url = "editarUsuarioPagina.php?id"+idProduto; 
 
         $.ajax({
-                    url: "editarClientePagina.php?id",
+                    url: "editarUsuarioPagina.php?id",
                     type: "GET",
                     dataType: "html",
                     data: {id: idProduto},
