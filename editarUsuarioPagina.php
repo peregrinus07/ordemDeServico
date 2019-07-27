@@ -30,7 +30,8 @@ if (!$conn) {
 
    		$idCliente = $registro["id_usuario"];
    		$nomeCliente = $registro["nome_usuario"];
-		$cpfCnpjCliente = $registro["cpf_usuario"];
+      $rg = $registro["rg_usuario"];
+		$cpf = $registro["cpf_usuario"];
 		$emailCliente = $registro["e_mail_usuario"];
 		$telefoneCliente = $registro["telefone_usuario"];
  
@@ -42,6 +43,8 @@ if (!$conn) {
   
 } // while
 
+
+   
 
   $sql ="SELECT * from tabela_endereco_usuario
 where fk_id_usuario ='$idCliente'
@@ -300,6 +303,9 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
 */
 
+   
+
+
 });
 
 
@@ -332,9 +338,16 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
       <input type="text"  name="rg" class="form-control" id="cpf" placeholder="">
     </div>
 -->
+  
+    <div class="form-group col-md-4">
+      <label for="inputPassword4">Rg</label>
+      <input type="text" name="rg" class="form-control" id="rg" value="<?php print_r($rg) ?>" placeholder="">
+    </div>
+
+   
     <div class="form-group col-md-4">
       <label for="inputPassword4">Cpf</label>
-      <input type="text" value="<?php echo $cpfCnpjCliente; ?>" name="cpf" class="form-control" id="cpf" placeholder="">
+      <input type="text" value="<?php print_r($cpf) ?>" name="cpf" class="form-control" id="cpf" placeholder="">
     </div>
 
     <div class="form-group col-md-4">
@@ -347,6 +360,7 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
     </div>
   
 
+    
   </div> <!-- form - row -->
   
    <div class="form-row">

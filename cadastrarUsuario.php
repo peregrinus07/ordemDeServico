@@ -180,9 +180,9 @@ $("#estados").change(function() {
 
 //$("#cpf").mask("999.999.999-99");  
 
- $("input[name='rg'").mask("999.999-999");
+ $("input[name='rg'").mask("999.999.999-99");
 
-  $("input[name='cpf'").mask("999.999-999");
+  $("input[name='cpf'").mask("999.999.999-99");
         //$('input.decimal').mask('#.##0,00');
 
  $("input[name='cep'").mask("99.999-999");
