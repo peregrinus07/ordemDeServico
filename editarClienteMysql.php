@@ -114,7 +114,7 @@ if (!$conn) {
 
 
     	$sql ="UPDATE  tabela_endereco_cliente
-SET fk_id_cliente='$id', fk_id_rua='$idRua',numero_endereco_cliente='$numero'
+SET fk_id_cliente='$id', fk_id_rua='$idRua',numero_endereco_cliente='$numero', cep_endereco_cliente='$cep'
 WHERE fk_id_cliente='$id'
 ";    	
 

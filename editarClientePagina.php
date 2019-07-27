@@ -81,7 +81,7 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
        $cidade = $registro["nome_cidade"];
        $estado = $registro["nome_estado"];
        $siglaEstado = $registro["sigla_estado"];
-       $cep = $registro["cep_rua"];
+       $cep = $registro["cep_endereco_cliente"];
    }
 
   //print_r("id: ".$idCliente);
@@ -107,6 +107,7 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 <script src="./js/bootstrap.min.js"></script>
 
   <script src="./js/listarCidades.js"></script>
+  <script src="./js/listarCep.js"></script>
   <script src="./js/mascaraEndereco.js"></script>
   <script src="./js/listarLogradouro.js"></script>
    
