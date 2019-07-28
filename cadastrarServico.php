@@ -39,9 +39,9 @@
 
 	 <div id="formularioCliente" style="float: left; margin-left: 10%; margin-top:-20px;">
 
+    <form   id="formulario" class="form-group" style="border:10px; margin-left: 50px; margin-top: 75px;" action="cadastrarServicoPhpMysql.php" method="POST">
 
-      <form   id="formulario" class="form-group" style="border:10px; margin-left: 50px; margin-top: 75px;" action="cadastrarServicoPhpMysql.php" method="POST">
- 
+
 
       <legend style="">Cadastrar Servico</legend>
 
@@ -63,20 +63,21 @@
  <div class="form-group">
    
      <textarea name="descricaoServico" rows="4" cols="60" >
-	
-	</textarea> 
+  
+  </textarea> 
     </div><!-- form-group -->
 
 
-<button onclick="verifica();" type="submit" class="btn btn-primary">Cadastrar</button>
+
+      <p><a href="listarServico.php"><p>Listar Servico<p></a><p>
+
+<button id="botao" onclick="validar();" type="submit" class="btn btn-primary" >Cadastrar</button>
 <button type="button" id="limparCampos" class="btn btn-danger">Limpar Campos</button>
+ 
+    </form>     
 
-      <p><a href="#listarClientes.php"><p>Listar Clientes<p></a><p>
 
-
- 	  </form>     
-
-      </div><!-- div formulario -->
+       </div><!-- div formulario -->
 
 </div><!-- container -->
 </body>
