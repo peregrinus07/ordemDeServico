@@ -43,6 +43,10 @@ if (!$conn) {
 } // while
 
 
+      $valor = str_replace('.',',', $precoServico);
+
+      $precoServico = $valor;
+
   $sql ="SELECT * from tabela_servico
 where id_servico ='$idCliente'
 ";
@@ -122,8 +126,25 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
    
 <script>
 	  $( document ).ready(function() {
-      /*
+  
+      var preco = $("#preco").val();
+
  
+    a = preco.toString().replace(".", ",");
+ 
+      //alert(a);
+
+      $("#preco").html(a);
+      $("#preco").load(" #preco");
+ 
+var x = document.getElementById("preco");
+    x.onfocus();
+ 
+         $("#preco").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+
+
+      /*
+
       $("#estados").change(function() {
     //$('#pesquisaCliente').keyup(function(){
          
