@@ -95,7 +95,7 @@ if (!$conn) {
    <script type="text/javascript" src="./js/maskMoney.min.js"></script>
 
 <script src="./js/bootstrap.min.js"></script>
- 
+<script src="./js/mascaraEndereco.js"></script>
   
   <style type="text/css">
     .ui-autocomplete{
@@ -166,8 +166,7 @@ if (!$conn) {
 
          $("input[name='telefone']").mask("(99) 999.999-999");
          
-
-
+          
          $("input.decimal").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 
 
@@ -321,6 +320,9 @@ if (!$conn) {
       $("#formulario").find('input').val('');
 
     }); // limpar campos
+
+
+    $("#preco").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 
 
 });

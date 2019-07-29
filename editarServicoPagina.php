@@ -43,9 +43,9 @@ if (!$conn) {
 } // while
 
 
-      $valor = str_replace('.',',', $precoServico);
+      //$valor = str_replace('.',',', $precoServico);
 
-      $precoServico = $valor;
+      //$precoServico = $valor;
 
   $sql ="SELECT * from tabela_servico
 where id_servico ='$idCliente'
@@ -138,10 +138,15 @@ $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
       $("#preco").load(" #preco");
  
 var x = document.getElementById("preco");
-    x.onfocus();
- 
+    x.focus();
+    $("#nome").focus();
+    $("#nome").blur();
          $("#preco").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 
+/*x.addEventListener('focus', (event) => {
+  event.target.style.background = 'pink';    
+});
+*/
 
       /*
 
