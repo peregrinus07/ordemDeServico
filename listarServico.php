@@ -377,12 +377,14 @@ if (!$conn) {
    $id = $registro['id_servico'];
    $idCliente = $registro['nome_servico'];
  
+   $preco = $registro['preco_servico'];
 
+   $numero = number_format($preco, 2, ',','.');
 
    echo "<tr>";    
    echo "<td> ".$registro['id_servico'] ."</td>";
    echo "<td>" .$idCliente ."</td>";
-   echo "<td> ".$registro['preco_servico'] ."</td>";   
+   echo "<td> ".$numero ."</td>";   
    echo "<td>" .$registro['descricao_servico'] ."</td>";
    echo "<td> 
    <a href='deletarServico.php?servico=$id'><button type='button' class='btn btn-primary'>Deletar</button></a>
