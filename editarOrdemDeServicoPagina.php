@@ -75,7 +75,8 @@ where id_ordem_de_servico='$id'";
 <script src="./js/bootstrap.min.js"></script>
 
   <script src="./js/listarCidades.js"></script>
-   
+  <script src="./js/validarOrdemDeServico.js"></script> 
+  
    <!-- Latest compiled and minified CSS -->
    <!--
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -396,7 +397,7 @@ where id_ordem_de_servico='$id'";
 
 
 <div class="form-group col-md-4">
-<button  type="submit" class="btn btn-primary">Cadastrar</button>
+<button id="botao"  type="submit" class="btn btn-primary">Cadastrar</button>
 <button type="button" id="limparCampos" class="btn btn-danger">Limpar Campos</button>
 </div>
 

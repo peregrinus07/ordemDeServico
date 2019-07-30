@@ -157,7 +157,7 @@ $sql3 ="select count(id_cep_rua) AS total from tabela_cep_rua where id_rua='$id'
      $sql ="UPDATE tabela_descricao_rua SET nome_da_rua = '$end', id_bairro = '2' WHERE id_descricao_rua ='$id'";
  
      mysqli_query($conn,$sql1) or die("<br>Erro ao tentar cadastrar rua");
-
+111
 //    $conta_linhas = mysqli_num_rows($conn,$sql3);
 
 
