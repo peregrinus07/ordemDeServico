@@ -284,10 +284,11 @@
      </div> <!-- div form-row -->
 
 
-<div class="form-group col-md-4">
-<button  type="submit" class="btn btn-primary">Cadastrar</button>
+  </div>
+<button id="botao" onclick="validar();" type="submit" class="btn btn-primary" >Cadastrar</button>
 <button type="button" id="limparCampos" class="btn btn-danger">Limpar Campos</button>
-</div>
+
+      <p><a href="listarOrdemDeServico.php"><p>Listar Clientes<p></a><p>
 
 <div class="form-group col-md-12" style="margin-top:-4%;">
       <p><br><a href="listarOrdemDeServico.php"><p>Listar Ordem de Servico<p></a><p>
