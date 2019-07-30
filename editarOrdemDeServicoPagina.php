@@ -321,7 +321,7 @@ where id_ordem_de_servico='$id'";
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Técnico Responsável</label>
-      <input type="text"  value="<?php echo $nomeFuncionario ?>" id="resopnsavelServico" name="resopnsavelServico" class="form-control decimal"   placeholder="Técnico">
+      <input onkeyup='upCase(this)'type="text"  value="<?php echo $nomeFuncionario ?>" id="resopnsavelServico" name="resopnsavelServico" class="form-control decimal"   placeholder="Técnico">
     </div>
     </div><!-- div form-row-->
 
@@ -331,7 +331,17 @@ where id_ordem_de_servico='$id'";
     
       <div class="form-group col-md-3">
       <label for="inputEmail4">Status <span id="validacao"></span></label>
-      <input onkeyup="upCase(this);" value="<?php echo $statusOrdemDeservico ?>"    type="text" name="status" class="form-control" id="inputEmail4" placeholder="status">
+      <!-- 
+      <input onkeyup="upCase(this);"
+        value="<?php echo $statusOrdemDeservico ?>"    type="text" name="status" class="form-control" id="inputEmail4" placeholder="status">
+      -->
+      <select name="status" id="status" class="form-control">
+        <option id="statusOpscao" selected>Escolher...</option>
+        <option value="orcamento">Orçamento</option>
+        <option value="iniciado">Iniciado</option>
+        <option value="emAndamento">Em andamento</option>
+        <option value="finalizado">Finalizado</option>
+      </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputPassword4"> Data Inicial</label>

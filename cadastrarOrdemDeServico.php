@@ -218,7 +218,7 @@
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Técnico Responsável</label>
-      <input type="text" id="resopnsavelServico" name="resopnsavelServico" class="form-control decimal"   placeholder="Técnico">
+      <input onkeypress="upCase(this);" type="text" id="resopnsavelServico" name="resopnsavelServico" class="form-control decimal"   placeholder="Técnico">
     </div>
     </div><!-- div form-row-->
 
@@ -230,8 +230,8 @@
       <label for="inputEmail4">Status <span id="validacao"></span></label>
       <!--<input onkeyup="upCase(this);"    type="text" name="status" class="form-control" id="inputEmail4" placeholder="status">
       -->
-      <select name="estado" id="estados" class="form-control">
-        <option id="estados2" selected>Escolher...</option>
+      <select name="status" id="status" class="form-control">
+        <option id="statusOpscao" selected>Escolher...</option>
         <option value="orcamento">Orçamento</option>
         <option value="iniciado">Iniciado</option>
         <option value="emAndamento">Em andamento</option>
