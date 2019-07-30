@@ -228,7 +228,15 @@
     
       <div class="form-group col-md-3">
       <label for="inputEmail4">Status <span id="validacao"></span></label>
-      <input onkeyup="upCase(this);"    type="text" name="status" class="form-control" id="inputEmail4" placeholder="status">
+      <!--<input onkeyup="upCase(this);"    type="text" name="status" class="form-control" id="inputEmail4" placeholder="status">
+      -->
+      <select name="estado" id="estados" class="form-control">
+        <option id="estados2" selected>Escolher...</option>
+        <option value="orcamento">Orçamento</option>
+        <option value="iniciado">Iniciado</option>
+        <option value="emAndamento">Em andamento</option>
+        <option value="finalizado">Finalizado</option>
+      </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputPassword4"> Data Inicial</label>
