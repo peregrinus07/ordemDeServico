@@ -3,15 +3,18 @@
 	$nomeCliente = $_POST["nomecliente"];
 	$nomeFuncionario = $_POST["resopnsavelServico"];
 	$status = $_POST["status"];
-	$precoCompraProduto = $_POST["precoCompraProduto"];
-	$precoProdutoVenda = $_POST["precoProdutoVenda"];
-	$quantidade = $_POST["quantidade"];
-	$data = $_POST["data"];
-    $descricaoProduto = $_POST["descricaoProduto"];
+	$dataInicial = $_POST["dataInicial"];
+	$dataFinal = $_POST["dataFinal"];
+	$garantia = $_POST["garantia"];
+	$descricao = $_POST["descricaoServic"];
+	$defeito = $_POST["defeito"];
+    $observacao = $_POST["observacao"];
+
+
     $id = $_POST["id"];
     $id1 = $_GET["id"];
 
-	$quantidadeEmEstoque = $_POST["quantidadeEmEstoque"];
+	$laudo = $_POST["laudoTecnico"];
 	$quantidadeMinimaEstoque = $_POST["quantidadeMinimaEmEstoque"];
 
 
@@ -19,16 +22,22 @@
 	echo "Cliente: " .$nomeCliente ."<br>";
 	echo "Funcionario: " .$nomeFuncionario ."<br>";
 	echo "Status: " .$status ."<br>";
-	echo "Preço produto compra: " .$precoCompraProduto;
+	
+	/*echo "Preço produto compra: " .$precoCompraProduto;
 	echo "Preço produto venda: " .$precoProdutoVenda;
 	echo "quantidade entrada produto: " .$quantidade ."<br>";
 	echo "quantidade em estoque: " .$quantidadeEmEstoque ."<br>";
 	echo "quantidade minima em estoque: " .$quantidadeMinimaEstoque ."<br>";
-	echo "data: " .$data;
-	echo "descricao produto: " .$descricaoProduto;
-	echo "Id: " .$id;
+	*/
+	echo "data inicial: " .$dataInicial;
+	echo "<br>data Final: " .$dataFinal;
+	echo "<br>garantia: " .$garantia;
+	echo "<br>descricao: " .$descricao;
+	echo "<br>defeito: " .$defeito;
+	echo "<br>observação: " .$observacao;
+	echo "<br>laudo: " .$laudo."<br>";
 
-
+/*
   $servername = "localhost";
   $database = "sistemaDeVendas";
   $username = "root";
@@ -45,16 +54,15 @@
 	$up = mysql_query("UPDATE tabela_produto SET nome_produto='$nomeProduto', descricao_produto='$descricaoProduto', preco_de_compra_produto='$precoCompraProduto', preco_de_venda_produto='$precoProdutoVenda' quantidade_entrada_produto='$quantidade', data_entrada_produto='$data',id_categoria_produto='1' WHERE id_produto = '$id'");	
 */
 
-	 	  $valor = str_replace('.','', $precoCompraProduto);
+/*	 	  $valor = str_replace('.','', $precoCompraProduto);
           $valorPrecoCompra = str_replace(',','.', $valor);
 
 	 	  $valor1 = str_replace('.','', $precoProdutoVenda);
           $valorPrecoVenda = str_replace(',','.', $valor1);
 
 
-
-	$sql = "UPDATE tabela_produto set nome_produto ='$nomeProduto', descricao_produto='$descricaoProduto', preco_de_compra_produto='$valorPrecoCompra', preco_de_venda_produto='$valorPrecoVenda',quantidade_minima_estoque_produto='$quantidadeMinimaEstoque' , quantidade_produto_estoque_produto='$quantidadeEmEstoque' , quantidade_entrada_produto='$quantidade',   data_entrada_produto='$data'  where id_produto = '$id'";
-
+*/
+	$sql = "UPDATE ";
  
    	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
