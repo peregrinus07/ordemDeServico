@@ -145,9 +145,9 @@ tabela_usuario on tabela_usuario.id_usuario = tabela_ordem_de_servico.fk_id_func
    echo "<td> 
    <a href='deletarOrdemDeServico.php?usuario=$idCliente'><button type='button' class='btn btn-primary'>Deletar</button></a>
 
-       <a id='<?php $idCliente ?>' onclick='modal(this.id);' href='#?usuario=$idCliente'>  <button type='button' class='btn btn-success'>Editar</button></a>
+       <a id='<?php print_r($idCliente) ?>' onclick='modal(this.id);' href='#?usuario=$idCliente'>  <button type='button' class='btn btn-success'>Editar</button></a>
 
-   <a href='deletarCliente.php'><button type='button' class='btn btn-danger'>Detalhar</button></a>";
+   <a href='detalharOrdemDeServico.php?id= $idCliente'><button type='button' class='btn btn-danger'>Detalhar</button></a>";
    echo "</td>";
    echo "</tr>";
 
@@ -277,14 +277,19 @@ tabela_usuario on tabela_usuario.id_usuario = tabela_ordem_de_servico.fk_id_func
 
 
         var idProduto = id;
+        var a = id;
+
+        var b = a.replace(/[^0-9]/g,'');
+
+        //alert(b);
 
         url = "editarClientePagina.php?id"+idProduto; 
 
         $.ajax({
-                    url: "editarOrdemDeServicoPagina.php?id",
+                    url: "editarOrdemDeServicoPagina.php?id=b",
                     type: "GET",
                     dataType: "html",
-                    data: {id: idProduto},
+                    data: {id: b},
                     success: function(data) {
                     //called when successful
 

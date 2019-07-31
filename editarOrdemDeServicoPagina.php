@@ -6,7 +6,7 @@
 	echo $id ."<br>";
 
 
-
+/*
 $servername = "localhost";
 $database = "sistemaDeVendas";
 $username = "root";
@@ -18,6 +18,9 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "<br>Connected successfully";
+
+*/
+	include("conexao.php");
 
 
   	 $sql = "select * from tabela_ordem_de_servico inner JOIN tabela_clientes on tabela_clientes.id_cliente = tabela_ordem_de_servico.fk_id_cliente
@@ -56,6 +59,8 @@ where id_ordem_de_servico='$id'";
 		//echo $nomeCliente ."<br>";
 
 }
+
+	//print_r("teste".$id);
 
 ?>
 
@@ -299,10 +304,14 @@ where id_ordem_de_servico='$id'";
 	<div class="row">
 		<div class="col-lg-12">
 		 
-		 
+	
       <form id="formulario" class="form-group" style="border:10px; margin-left: 50px; margin-top: 1px;" action="
       EditarOrdemDeServicoPhpMysql.php?id=<?php echo $idOrdemDeServico; ?>" method="POST">
    
+
+	<input type="hidden" value="<?php print_r($idOrdemDeServico)?>" name="">
+
+
       <legend style="">Editar Ordem de Serviço <?php 
 
       $data = date_create('2000-01-01');
@@ -322,7 +331,7 @@ where id_ordem_de_servico='$id'";
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Técnico Responsável</label>
-      <input onkeyup='upCase(this)'type="text"  value="<?php echo $nomeFuncionario ?>" id="resopnsavelServico" name="resopnsavelServico" class="form-control decimal"   placeholder="Técnico">
+      <input onkeyup='upCase(this)'type="text"  value="<?php echo $nomeFuncionario ?>" id="resopnsavelServico" name="resopnsavelServico" class="form-control "   placeholder="Técnico">
     </div>
     </div><!-- div form-row-->
 
@@ -423,3 +432,8 @@ where id_ordem_de_servico='$id'";
 
 </body>
 </html>
+
+
+
+
+?>
