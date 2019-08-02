@@ -21,17 +21,22 @@ if (!$conn) {
 
 */
 	include("conexao.php");
-
-
-  	 $sql = "select * from tabela_ordem_de_servico inner JOIN tabela_clientes on tabela_clientes.id_cliente = tabela_ordem_de_servico.fk_id_cliente
+ 
+ $sql = "select * from tabela_ordem_de_servico inner JOIN tabela_clientes on tabela_clientes.id_cliente = tabela_ordem_de_servico.fk_id_cliente
 inner JOIN tabela_usuario on tabela_usuario.id_usuario = tabela_ordem_de_servico.fk_id_funcionario
 where id_ordem_de_servico='$id'";
  	 $resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
+
+
 
  	  while ($registro = mysqli_fetch_array($resultado))
    {
 
    		$idOrdemDeServico = $registro["id_ordem_de_servico"];
+
+   		$idCliente = $registro["fk_id_cliente"];
+
+
    		$nomeDocliente = $registro["nome_cliente"];
 		  $nomeFuncionario = $registro["nome_usuario"];
       $statusOrdemDeservico = utf8_encode($registro["status_ordem_de_servico"]);
@@ -62,12 +67,25 @@ where id_ordem_de_servico='$id'";
 
 	//print_r("teste".$id);
 
+ 
 ?>
+
 
 <html>
 <head>
 	 
-	 <link rel="stylesheet" href="./css/bootstrap.min.css">
+   <style rel="stylesheet" type="text/css">
+    .ui-autocomplete { z-index: 10000000; } 
+  </style>
+
+
+ <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+   
+   <!-- Latest compiled and minified CSS -->
+   <!--
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+-->
+   <link rel="stylesheet" href="./css/bootstrap.min.css">
  
  <script src="./js/jquery-ui.min.js"></script>
  <link rel="stylesheet" href="./js/jquery-ui.css">
@@ -79,8 +97,17 @@ where id_ordem_de_servico='$id'";
 
 <script src="./js/bootstrap.min.js"></script>
 
-  <script src="./js/listarCidades.js"></script>
-  <script src="./js/validarOrdemDeServico.js"></script> 
+<script src="./js/letrasMaiusculas.js"></script>
+
+<script src="./js/pesquisarCliente.js"></script>
+
+<script src="./js/pesquisarUsuario.js"></script>
+
+
+  
+ <!--
+    <script src="./js/pesquisarCliente.js"></script>
+ -->
   
    <!-- Latest compiled and minified CSS -->
    <!--
@@ -94,6 +121,10 @@ where id_ordem_de_servico='$id'";
   margin-left: -370px;
 }
 
+.ui-autocomplete{
+   z-index: 1050;
+}
+
 #modal{
 
   margin: 0 auto;
@@ -102,9 +133,27 @@ where id_ordem_de_servico='$id'";
 </style>
 
  
-   
-   
+ 
 <script>
+
+$("#cliente").keyup(function(){
+	
+	a = $("#cliente").val();
+
+	console.log(a);
+
+  var esportes = [
+    "Natação",
+    "Futebol",
+    "Vôlei",
+    "Basquete"
+  ];
+  $("#cliente" ).autocomplete({
+    source: esportes
+  });
+});
+
+
 	  $( document ).ready(function() {
       /*
  
@@ -290,11 +339,11 @@ where id_ordem_de_servico='$id'";
 
 */
 
+
 });
 
 
 </script>
-
 
 </head>
 <body>
@@ -325,9 +374,10 @@ where id_ordem_de_servico='$id'";
 
       
     <div class="form-row" style="margin-top: 5%;">
+    <input type="hidden" value="<?php print_r($idCliente) ?>" name="idCliente" id="idCliente">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Cliente <span id="validacao"></span></label>
-      <input onkeyup="upCase(this);" id="nomeCliente"  type="text" name="nomecliente" value="<?php echo $nomeDocliente; ?>" class="form-control" id="inputEmail4" placeholder="Nome">
+      <label for="inputEmail4">Cliente<span id="validacao"></span></label>
+      <input onkeyup="upCase(this);" id="nomeCliente"  type="text" name="nomecliente" class="form-control" id="inputEmail4" placeholder="Nome">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Técnico Responsável</label>
@@ -435,5 +485,5 @@ where id_ordem_de_servico='$id'";
 
 
 
-
-?>
+</head>
+<body>

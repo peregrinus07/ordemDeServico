@@ -1,9 +1,5 @@
- 
-
 $( document ).ready(function() {
 
-
-	$("#botao").on('click', function() {
 
 
 	//alert("teste");
@@ -13,6 +9,9 @@ $( document ).ready(function() {
        //$("#statusOpscao").find('input').val('');
 	var a = $("#status").val();
 
+
+	$("#botao").on('click', function() {
+
 	if(a=="Escolher..."){
 		alert("Selecione um status");
 		alert(a);
@@ -21,6 +20,7 @@ $( document ).ready(function() {
 //$( "#statusOpscao" ).css(  "display", "inline" ).fadeOut( 1000 );
  
 }//
+
 	else{
 	return true;
 }
@@ -28,4 +28,6 @@ $( document ).ready(function() {
 
     }); // limpar campos
 
-});
+
+
+})
