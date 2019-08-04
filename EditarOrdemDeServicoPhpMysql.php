@@ -1,6 +1,7 @@
 <?php 
 
 	$nomeCliente = $_POST["nomecliente"];
+	$idCliente = $_POST["idCliente"];
 	$nomeFuncionario = $_POST["resopnsavelServico"];
 	$status = $_POST["status"];
 	$dataInicial = $_POST["dataInicial"];
@@ -18,7 +19,7 @@
 	$quantidadeMinimaEstoque = $_POST["quantidadeMinimaEmEstoque"];
 
 
-	echo "Id: " .$id1 ."<br>";
+	echo "Id Cliente: " .$idCliente ."<br>";
 	echo "Cliente: " .$nomeCliente ."<br>";
 	echo "Funcionario: " .$nomeFuncionario ."<br>";
 	echo "Status: " .$status ."<br>";
@@ -62,7 +63,9 @@
 
 
 */
-	$sql = "UPDATE ";
+	$sql = "UPDATE tabela_ordem_de_servico
+SET fk_id_cliente=1, fk_id_funcionario=NULL, status_ordem_de_servico=NULL, data_inicial_ordem_de_servico=NULL, data_final_ordem_de_servico=NULL, garantia_ordem_de_servico=NULL, descricao_produto_servico=NULL, defeito_ordem_de_servico=NULL, observacao_ordem_de_servico=NULL, laudo_tecnico_ordem_de_servico=NULL
+WHERE id_ordem_de_servico=1";
  
    	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 

@@ -1,0 +1,21 @@
+$( document ).ready(function() {
+
+	$("#nomeCliente").blur(function() {
+
+	var  a = $("#nomeCliente").val().replace(/[^0-9]/g,'');
+ 
+ 	$("#teste").html(a);
+	$("#idCliente").html("teste");
+//  document.getElementById("teste").innerHTML = "ata";
+//	$("#idCliente").load(" #idCliente");
+	b = "id: ";
+	a =  b + a;
+
+$("#idCliente").val(a);
+$("#teste").html(a);
+//location.reload();
+	});
+
+
+
+});

@@ -99,11 +99,16 @@ where id_ordem_de_servico='$id'";
 
 <script src="./js/letrasMaiusculas.js"></script>
 
+<!-- 
 <script src="./js/pesquisarCliente.js"></script>
+-->
 
+<script src="./js/pesquisarClienteOrdemDeServico.js"></script>
+
+ 
 <script src="./js/pesquisarUsuario.js"></script>
 
-
+<script src="./js/idDoCliente.js"></script>
   
  <!--
     <script src="./js/pesquisarCliente.js"></script>
@@ -375,9 +380,10 @@ $("#cliente").keyup(function(){
       
     <div class="form-row" style="margin-top: 5%;">
     <input type="hidden" value="<?php print_r($idCliente) ?>" name="idCliente" id="idCliente">
+    
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Cliente<span id="validacao"></span></label>
-      <input onkeyup="upCase(this);" id="nomeCliente"  type="text" name="nomecliente" class="form-control" id="inputEmail4" placeholder="Nome">
+      <label for="inputEmail4">Cliente <label id="teste"> - id</label><span id="validacao"></span></label>
+      <input onkeyup="upCase(this);" id="nomeCliente"  type="text" name="nomecliente" class="form-control" id="inputEmail4" value="<?php print_r($nomeDocliente) ?>" placeholder="Nome">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Técnico Responsável</label>
@@ -390,7 +396,7 @@ $("#cliente").keyup(function(){
   <div class="form-row">
     
       <div class="form-group col-md-3">
-      <label for="inputEmail4">Status <span id="validacao"></span></label>
+      <label for="inputEmail4">Status <span id="validacao"></span></label>	
       <!-- 
       <input onkeyup="upCase(this);"
         value="<?php echo $statusOrdemDeservico ?>"    type="text" name="status" class="form-control" id="inputEmail4" placeholder="status">
@@ -415,7 +421,7 @@ $("#cliente").keyup(function(){
    
    <div class="form-group col-md-3">
       <label for="inputPassword4"> Garantia</label>
-      <input type="text" name="garantia" value="<?php echo $garantia ?>"  class="form-control decimal" id="telefone" placeholder="">
+      <input type="text" name="garantia" value="<?php echo $garantia ?>"  class="form-control " id="telefone" placeholder="">
     </div>
 
      <div class="form-row">
