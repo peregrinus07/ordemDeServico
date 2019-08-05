@@ -42,7 +42,11 @@ $idCliente = $registro["fk_id_cliente"];
 
    		$nomeDocliente = $registro["nome_cliente"];
 		  $nomeFuncionario = $registro["nome_usuario"];
-      $statusOrdemDeservico = utf8_encode($registro["status_ordem_de_servico"]);
+      //$statusOrdemDeservico = utf8_encode($registro["status_ordem_de_servico"]);
+
+$statusOrdemDeservico = $registro["status_ordem_de_servico"];
+      
+
       $dataInicial = $registro["data_inicial_ordem_de_servico"];
 
       $dataInit = date('y', strftime($dataInicial));
@@ -120,6 +124,9 @@ $idCliente = $registro["fk_id_cliente"];
 <script src="./js/idDoUsuario.js"></script>  
 
 <script src="./js/pesquisarUsuarioOrdemDeServico.js"></script>  
+
+  
+<script src="./js/carregarStatus.js"></script>  
 
 
  <!--
@@ -410,17 +417,13 @@ $("#cliente").keyup(function(){
   <div class="form-row">
     
       <div class="form-group col-md-3">
-      <label for="inputEmail4">Status <span id="validacao"></span></label>	
+      <label for="inputEmail4">Status <span id="validacao"></span><label><button id="botaostatus" style="width: 40px; height: 20px; background-color: grey; margin-top: -10px"></button></label></label>	
       <!-- 
       <input onkeyup="upCase(this);"
         value="<?php echo $statusOrdemDeservico ?>"    type="text" name="status" class="form-control" id="inputEmail4" placeholder="status">
       -->
       <select name="status" id="status" class="form-control">
-        <option id="statusOpscao" selected>Escolher...</option>
-        <option value="orcamento">Orçamento</option>
-        <option value="iniciado">Iniciado</option>
-        <option value="emAndamento">Em andamento</option>
-        <option value="finalizado">Finalizado</option>
+                <option value="<?php print_r($statusOrdemDeservico) ?>"><?php print_r($statusOrdemDeservico) ?></option>
       </select>
     </div>
     <div class="form-group col-md-3">
