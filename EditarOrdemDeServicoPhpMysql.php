@@ -64,7 +64,7 @@
 
 */
 	$sql = "UPDATE tabela_ordem_de_servico
-SET fk_id_cliente=1, fk_id_funcionario=NULL, status_ordem_de_servico=NULL, data_inicial_ordem_de_servico=NULL, data_final_ordem_de_servico=NULL, garantia_ordem_de_servico=NULL, descricao_produto_servico=NULL, defeito_ordem_de_servico=NULL, observacao_ordem_de_servico=NULL, laudo_tecnico_ordem_de_servico=NULL
+SET fk_id_cliente=$idCliente, fk_id_funcionario=NULL, status_ordem_de_servico=NULL, data_inicial_ordem_de_servico=NULL, data_final_ordem_de_servico=NULL, garantia_ordem_de_servico=NULL, descricao_produto_servico=NULL, defeito_ordem_de_servico=NULL, observacao_ordem_de_servico=NULL, laudo_tecnico_ordem_de_servico=NULL
 WHERE id_ordem_de_servico=1";
  
    	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");

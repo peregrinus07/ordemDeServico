@@ -14,6 +14,9 @@ $( document ).ready(function() {
 $("#idCliente").val(a);
 $("#teste").html(a);
 //location.reload();
+
+
+
 	});
 
 

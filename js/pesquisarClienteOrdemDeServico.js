@@ -3,6 +3,8 @@ $( document ).ready(function() {
 //listar endereços
 
 
+	alert("a");
+
     $("#descricao").keyup(function(){
 
         cidade = $("#descricao").val();
@@ -57,6 +59,8 @@ $( document ).ready(function() {
 
 
 	 $("#resopnsavelServico").keyup(function(){
+
+	alert("testea2");
 
             cidade = $("#resopnsavelServico").val();
 	 

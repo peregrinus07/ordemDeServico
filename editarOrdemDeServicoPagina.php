@@ -34,7 +34,7 @@ where id_ordem_de_servico='$id'";
 
    		$idOrdemDeServico = $registro["id_ordem_de_servico"];
 
-   		$idCliente = $registro["fk_id_cliente"];
+   		$idFuncionario = $registro["fk_id_funcionario"];
 
 
    		$nomeDocliente = $registro["nome_cliente"];
@@ -105,11 +105,20 @@ where id_ordem_de_servico='$id'";
 
 <script src="./js/pesquisarClienteOrdemDeServico.js"></script>
 
- 
+ <!--
 <script src="./js/pesquisarUsuario.js"></script>
+-->
 
+<!--
+<script src="./js/pesquisarUsuario.js"></script>
+-->
 <script src="./js/idDoCliente.js"></script>
   
+<script src="./js/idDoUsuario.js"></script>  
+
+<script src="./js/pesquisarUsuarioOrdemDeServico.js"></script>  
+
+
  <!--
     <script src="./js/pesquisarCliente.js"></script>
  -->
@@ -385,6 +394,8 @@ $("#cliente").keyup(function(){
       <label for="inputEmail4">Cliente <label id="teste"> - id</label><span id="validacao"></span></label>
       <input onkeyup="upCase(this);" id="nomeCliente"  type="text" name="nomecliente" class="form-control" id="inputEmail4" value="<?php print_r($nomeDocliente) ?>" placeholder="Nome">
     </div>
+    <input type="text" value="<?php print_r($idFuncionario) ?>" name="idTecnico" id="idTecnico">
+    
     <div class="form-group col-md-6">
       <label for="inputPassword4">Técnico Responsável</label>
       <input onkeyup='upCase(this)'type="text"  value="<?php echo $nomeFuncionario ?>" id="resopnsavelServico" name="resopnsavelServico" class="form-control "   placeholder="Técnico">
@@ -489,7 +500,7 @@ $("#cliente").keyup(function(){
 </body>
 </html>
 
-
+ 
 
 </head>
 <body>
