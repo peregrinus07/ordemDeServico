@@ -34,6 +34,9 @@ where id_ordem_de_servico='$id'";
 
    		$idOrdemDeServico = $registro["id_ordem_de_servico"];
 
+$idCliente = $registro["fk_id_cliente"];
+
+
    		$idFuncionario = $registro["fk_id_funcionario"];
 
 
@@ -372,7 +375,7 @@ $("#cliente").keyup(function(){
       EditarOrdemDeServicoPhpMysql.php?id=<?php echo $idOrdemDeServico; ?>" method="POST">
    
 
-	<input type="hidden" value="<?php print_r($idOrdemDeServico)?>" name="">
+	<input type="hidden" value="<?php print_r($idOrdemDeServico)?>" name="idOrdemDeServico">
 
 
       <legend style="">Editar Ordem de Serviço <?php 
@@ -394,10 +397,10 @@ $("#cliente").keyup(function(){
       <label for="inputEmail4">Cliente <label id="teste"> - id</label><span id="validacao"></span></label>
       <input onkeyup="upCase(this);" id="nomeCliente"  type="text" name="nomecliente" class="form-control" id="inputEmail4" value="<?php print_r($nomeDocliente) ?>" placeholder="Nome">
     </div>
-    <input type="text" value="<?php print_r($idFuncionario) ?>" name="idTecnico" id="idTecnico">
+    <input type="hidden" value="<?php print_r($idFuncionario) ?>" name="idTecnico" id="idTecnico">
     
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Técnico Responsável</label>
+      <label for="inputPassword4">Técnico Responsável <label id="usuario"> - id</label></label>
       <input onkeyup='upCase(this)'type="text"  value="<?php echo $nomeFuncionario ?>" id="resopnsavelServico" name="resopnsavelServico" class="form-control "   placeholder="Técnico">
     </div>
     </div><!-- div form-row-->

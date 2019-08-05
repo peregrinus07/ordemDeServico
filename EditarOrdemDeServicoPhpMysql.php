@@ -1,7 +1,13 @@
 <?php 
 
+	
+	
+	include("conexao.php");
+
+	$idOrdemDeServico = $_POST["idOrdemDeServico"];
 	$nomeCliente = $_POST["nomecliente"];
 	$idCliente = $_POST["idCliente"];
+	$idTecnico = $_POST["idTecnico"];
 	$nomeFuncionario = $_POST["resopnsavelServico"];
 	$status = $_POST["status"];
 	$dataInicial = $_POST["dataInicial"];
@@ -18,8 +24,9 @@
 	$laudo = $_POST["laudoTecnico"];
 	$quantidadeMinimaEstoque = $_POST["quantidadeMinimaEmEstoque"];
 
-
+	echo "Id ordem de servico: " .$id1 ."<br>";
 	echo "Id Cliente: " .$idCliente ."<br>";
+	echo "Id Técnico: " .$idTecnico ."<br>";
 	echo "Cliente: " .$nomeCliente ."<br>";
 	echo "Funcionario: " .$nomeFuncionario ."<br>";
 	echo "Status: " .$status ."<br>";
@@ -63,16 +70,16 @@
 
 
 */
-	$sql = "UPDATE tabela_ordem_de_servico
-SET fk_id_cliente=$idCliente, fk_id_funcionario=NULL, status_ordem_de_servico=NULL, data_inicial_ordem_de_servico=NULL, data_final_ordem_de_servico=NULL, garantia_ordem_de_servico=NULL, descricao_produto_servico=NULL, defeito_ordem_de_servico=NULL, observacao_ordem_de_servico=NULL, laudo_tecnico_ordem_de_servico=NULL
-WHERE id_ordem_de_servico=1";
+	 $sql = "UPDATE tabela_ordem_de_servico
+SET fk_id_cliente='$idCliente', fk_id_funcionario='$idTecnico', status_ordem_de_servico='$status', data_inicial_ordem_de_servico='$dataInicial', data_final_ordem_de_servico='$dataFinal', garantia_ordem_de_servico='$garantia', descricao_produto_servico='$descricaoProduto', defeito_ordem_de_servico='$defeito', observacao_ordem_de_servico='$observacao', laudo_tecnico_ordem_de_servico='$laudo'
+WHERE id_ordem_de_servico='$id1'";
  
    	$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
-	echo "<br>". $sql ."AVA";	
+	//echo "<br>". $sql ."AVA";	
 
 
-	$sql ="select quantidade_entrada_produto, quantidade_produto_estoque_produto from tabela_produto where id_produto ='$id'";
+	/*$sql ="select quantidade_entrada_produto, quantidade_produto_estoque_produto from tabela_produto where id_produto ='$id'";
 
 		$resultado = mysqli_query($conn,$sql) or die("Erro ao retornar dados");
 
@@ -98,7 +105,7 @@ WHERE id_ordem_de_servico=1";
  
    }
 
-
+*/
   	mysqli_close($conn);
 
 ?>

@@ -23,7 +23,22 @@ $( document ).ready(function() {
 
 
 
-});	
+}); // function
+
+	$("#resopnsavelServico").blur(function() {
+
+ var  a = $("#resopnsavelServico").val().replace(/[^0-9]/g,'');
+
+	if(a==""){
+ 
+	a = $("#idTecnico").val();
+//alert(a);
+	}
+
+ 	$("#usuario").html(a);
+	$("#idTecnico").val(a);
+
+});		
  
        
 

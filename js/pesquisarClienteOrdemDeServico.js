@@ -3,7 +3,7 @@ $( document ).ready(function() {
 //listar endereços
 
 
-	alert("a");
+	//alert("a");
 
     $("#descricao").keyup(function(){
 
@@ -60,7 +60,7 @@ $( document ).ready(function() {
 
 	 $("#resopnsavelServico").keyup(function(){
 
-	alert("testea2");
+	//alert("testea2");
 
             cidade = $("#resopnsavelServico").val();
 	 
@@ -69,7 +69,7 @@ $( document ).ready(function() {
 	 $("#resopnsavelServico").autocomplete({
      
 	      // fonte dos dados
-      source: "pesquisar_usuario.php?cidade="+cidade+"",
+//      source: "pesquisar_usuario.php?cidade="+cidade+"",
 
 	   });
  
